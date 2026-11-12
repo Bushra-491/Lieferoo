@@ -40,7 +40,18 @@ Environment variables: None.
 ## Data
 
 - Sample data used: `B1_sample_addresses.json` · `B2_sample_orders.json` (kept unchanged, in the `data/` folder)
-- Data changes: None so far. If I add fields later (for example extra order statuses), I will list them here.
+- Data changes: Added 6 new fields to the order, as planned by the PM. They sit next to the existing fields. No existing field is renamed or removed (the original `delivery_address.detail` stays for the old sample orders).
+
+| New field | Type | Example | What it is |
+|---|---|---|---|
+| `building` | string | `Bldg 101` | Building inside the address (apartment block, villa A/B) |
+| `floor` | string | `12F` | Floor |
+| `unit` | string | `1203` | Unit or room number |
+| `entry_method` | string (fixed list, draft) | `door_code` | How the rider gets in: `door_code`, `call_on_arrival`, `leave_at_door`, `guard` |
+| `entry_code` | string or null | `4826#` | Door or gate code, if there is one |
+| `rider_note` | string | `Don't ring the bell, baby sleeping` | Short extra note, kept as typed |
+
+The `entry_method` list is a first draft. I will agree it with the designer, because it decides the Korean labels on the rider screen.
 
 ### Data structure draft
 
