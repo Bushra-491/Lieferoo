@@ -120,9 +120,6 @@ Things I noticed in the sample data that the design must handle:
 - I used Claude (an AI assistant) to understand the project brief and data spec, plan the steps and time, help me in writing the code (whish is improved by me after it) and review my work.
 
 ## Known issues
-
-- The page card may be wider than a 375px phone screen. I have not checked or fixed this yet. Plan: add `max-width` and `box-sizing: border-box` to the card.
-- The browser console shows a Content Security Policy `eval` warning in my normal browser. It did not appear to affect the page, and the page works in incognito.
 - Customer screen, rider screen and shared storage are not built yet.
 
 ## Team
