@@ -1,0 +1,640 @@
+{
+  "meta": {
+    "name": "Lieferoo sample addresses",
+    "version": "1.1",
+    "updated": "2026-11-09",
+    "count": 30,
+    "note": "Fictional data for the 2days project. Road names are real; building names, numbers and coordinates are made up. Do not use for real deliveries.",
+    "spec": "B3_data_spec.md"
+  },
+  "addresses": [
+    {
+      "address_id": "ADR-001",
+      "building_type": "apartment",
+      "building_name_ko": "한빛마을1단지아파트",
+      "building_name_en": "Hanbit Village Complex 1 Apt.",
+      "sub_buildings": [
+        "101동",
+        "102동",
+        "103동",
+        "104동"
+      ],
+      "road_address_ko": "서울특별시 마포구 성미산로17길 24",
+      "road_address_en": "24, Seongmisan-ro 17-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 연남동 239-2",
+      "jibun_address_en": "239-2, Yeonnam-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "연남동",
+      "legal_dong_en": "Yeonnam-dong",
+      "zip_code": "03981",
+      "location": {
+        "lat": 37.56281,
+        "lng": 126.92312
+      }
+    },
+    {
+      "address_id": "ADR-002",
+      "building_type": "apartment",
+      "building_name_ko": "한빛마을2단지아파트",
+      "building_name_en": "Hanbit Village Complex 2 Apt.",
+      "sub_buildings": [
+        "101동",
+        "102동",
+        "103동"
+      ],
+      "road_address_ko": "서울특별시 마포구 동교로51길 10",
+      "road_address_en": "10, Donggyo-ro 51-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 연남동 240-15",
+      "jibun_address_en": "240-15, Yeonnam-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "연남동",
+      "legal_dong_en": "Yeonnam-dong",
+      "zip_code": "03981",
+      "location": {
+        "lat": 37.56342,
+        "lng": 126.92405
+      }
+    },
+    {
+      "address_id": "ADR-003",
+      "building_type": "villa",
+      "building_name_ko": "그린빌",
+      "building_name_en": "Green Ville",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 마포구 성미산로29길 15",
+      "road_address_en": "15, Seongmisan-ro 29-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 연남동 383-7",
+      "jibun_address_en": "383-7, Yeonnam-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "연남동",
+      "legal_dong_en": "Yeonnam-dong",
+      "zip_code": "03983",
+      "location": {
+        "lat": 37.56518,
+        "lng": 126.92268
+      }
+    },
+    {
+      "address_id": "ADR-004",
+      "building_type": "villa",
+      "building_name_ko": "그린빌2차",
+      "building_name_en": "Green Ville 2",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 마포구 성미산로29길 15-3",
+      "road_address_en": "15-3, Seongmisan-ro 29-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 연남동 383-12",
+      "jibun_address_en": "383-12, Yeonnam-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "연남동",
+      "legal_dong_en": "Yeonnam-dong",
+      "zip_code": "03983",
+      "location": {
+        "lat": 37.56531,
+        "lng": 126.92285
+      }
+    },
+    {
+      "address_id": "ADR-005",
+      "building_type": "villa",
+      "building_name_ko": null,
+      "building_name_en": null,
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 마포구 와우산로21길 19-7",
+      "road_address_en": "19-7, Wausan-ro 21-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 서교동 345-12",
+      "jibun_address_en": "345-12, Seogyo-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "서교동",
+      "legal_dong_en": "Seogyo-dong",
+      "zip_code": "04047",
+      "location": {
+        "lat": 37.55362,
+        "lng": 126.92418
+      }
+    },
+    {
+      "address_id": "ADR-006",
+      "building_type": "villa",
+      "building_name_ko": null,
+      "building_name_en": null,
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 마포구 잔다리로7길 12",
+      "road_address_en": "12, Jandari-ro 7-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 서교동 345-21",
+      "jibun_address_en": "345-21, Seogyo-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "서교동",
+      "legal_dong_en": "Seogyo-dong",
+      "zip_code": "04047",
+      "location": {
+        "lat": 37.55381,
+        "lng": 126.92386
+      }
+    },
+    {
+      "address_id": "ADR-007",
+      "building_type": "officetel",
+      "building_name_ko": null,
+      "building_name_en": null,
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 마포구 어울마당로5길 23",
+      "road_address_en": "23, Eoulmadang-ro 5-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 서교동 403-9",
+      "jibun_address_en": "403-9, Seogyo-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "서교동",
+      "legal_dong_en": "Seogyo-dong",
+      "zip_code": "04044",
+      "location": {
+        "lat": 37.55093,
+        "lng": 126.92131
+      }
+    },
+    {
+      "address_id": "ADR-008",
+      "building_type": "villa",
+      "building_name_ko": "동교빌라",
+      "building_name_en": "Donggyo Villa",
+      "sub_buildings": [
+        "가동",
+        "나동"
+      ],
+      "road_address_ko": "서울특별시 마포구 동교로38길 21",
+      "road_address_en": "21, Donggyo-ro 38-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 동교동 184-5",
+      "jibun_address_en": "184-5, Donggyo-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "동교동",
+      "legal_dong_en": "Donggyo-dong",
+      "zip_code": "03995",
+      "location": {
+        "lat": 37.55934,
+        "lng": 126.92518
+      }
+    },
+    {
+      "address_id": "ADR-009",
+      "building_type": "officetel",
+      "building_name_ko": "더스테이서교",
+      "building_name_en": "The Stay Seogyo",
+      "sub_buildings": [
+        "A동",
+        "B동"
+      ],
+      "road_address_ko": "서울특별시 마포구 양화로16길 8",
+      "road_address_en": "8, Yanghwa-ro 16-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 서교동 358-3",
+      "jibun_address_en": "358-3, Seogyo-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "서교동",
+      "legal_dong_en": "Seogyo-dong",
+      "zip_code": "04039",
+      "location": {
+        "lat": 37.55542,
+        "lng": 126.91987
+      }
+    },
+    {
+      "address_id": "ADR-010",
+      "building_type": "house",
+      "building_name_ko": null,
+      "building_name_en": null,
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 마포구 연남로3길 8",
+      "road_address_en": "8, Yeonnam-ro 3-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 연남동 227-31",
+      "jibun_address_en": "227-31, Yeonnam-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "연남동",
+      "legal_dong_en": "Yeonnam-dong",
+      "zip_code": "03988",
+      "location": {
+        "lat": 37.56105,
+        "lng": 126.92055
+      }
+    },
+    {
+      "address_id": "ADR-011",
+      "building_type": "villa",
+      "building_name_ko": "그린빌",
+      "building_name_en": "Green Ville",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 용산구 보광로59길 12",
+      "road_address_en": "12, Bogwang-ro 59-gil, Yongsan-gu, Seoul",
+      "jibun_address_ko": "서울특별시 용산구 이태원동 34-87",
+      "jibun_address_en": "34-87, Itaewon-dong, Yongsan-gu, Seoul",
+      "district_ko": "용산구",
+      "district_en": "Yongsan-gu",
+      "legal_dong_ko": "이태원동",
+      "legal_dong_en": "Itaewon-dong",
+      "zip_code": "04390",
+      "location": {
+        "lat": 37.53382,
+        "lng": 126.99251
+      }
+    },
+    {
+      "address_id": "ADR-012",
+      "building_type": "house",
+      "building_name_ko": null,
+      "building_name_en": null,
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 용산구 신흥로20길 37",
+      "road_address_en": "37, Sinheung-ro 20-gil, Yongsan-gu, Seoul",
+      "jibun_address_ko": "서울특별시 용산구 용산동2가 산2-14",
+      "jibun_address_en": "San 2-14, Yongsan-dong 2-ga, Yongsan-gu, Seoul",
+      "district_ko": "용산구",
+      "district_en": "Yongsan-gu",
+      "legal_dong_ko": "용산동2가",
+      "legal_dong_en": "Yongsan-dong 2-ga",
+      "zip_code": "04339",
+      "location": {
+        "lat": 37.54452,
+        "lng": 126.98712
+      }
+    },
+    {
+      "address_id": "ADR-013",
+      "building_type": "villa",
+      "building_name_ko": "한빛빌라",
+      "building_name_en": "Hanbit Villa",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 용산구 신흥로15길 22",
+      "road_address_en": "22, Sinheung-ro 15-gil, Yongsan-gu, Seoul",
+      "jibun_address_ko": "서울특별시 용산구 용산동2가 1-482",
+      "jibun_address_en": "1-482, Yongsan-dong 2-ga, Yongsan-gu, Seoul",
+      "district_ko": "용산구",
+      "district_en": "Yongsan-gu",
+      "legal_dong_ko": "용산동2가",
+      "legal_dong_en": "Yongsan-dong 2-ga",
+      "zip_code": "04338",
+      "location": {
+        "lat": 37.54388,
+        "lng": 126.98597
+      }
+    },
+    {
+      "address_id": "ADR-014",
+      "building_type": "villa",
+      "building_name_ko": "한남리버하우스",
+      "building_name_en": "Hannam River House",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 용산구 대사관로11길 30",
+      "road_address_en": "30, Daesagwan-ro 11-gil, Yongsan-gu, Seoul",
+      "jibun_address_ko": "서울특별시 용산구 한남동 726-14",
+      "jibun_address_en": "726-14, Hannam-dong, Yongsan-gu, Seoul",
+      "district_ko": "용산구",
+      "district_en": "Yongsan-gu",
+      "legal_dong_ko": "한남동",
+      "legal_dong_en": "Hannam-dong",
+      "zip_code": "04417",
+      "location": {
+        "lat": 37.53785,
+        "lng": 127.00398
+      }
+    },
+    {
+      "address_id": "ADR-015",
+      "building_type": "officetel",
+      "building_name_ko": null,
+      "building_name_en": null,
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 용산구 이태원로27길 44",
+      "road_address_en": "44, Itaewon-ro 27-gil, Yongsan-gu, Seoul",
+      "jibun_address_ko": "서울특별시 용산구 이태원동 128-7",
+      "jibun_address_en": "128-7, Itaewon-dong, Yongsan-gu, Seoul",
+      "district_ko": "용산구",
+      "district_en": "Yongsan-gu",
+      "legal_dong_ko": "이태원동",
+      "legal_dong_en": "Itaewon-dong",
+      "zip_code": "04350",
+      "location": {
+        "lat": 37.53452,
+        "lng": 126.99328
+      }
+    },
+    {
+      "address_id": "ADR-016",
+      "building_type": "villa",
+      "building_name_ko": "하늘빌라",
+      "building_name_en": "Haneul Villa",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 용산구 회나무로13길 8",
+      "road_address_en": "8, Hoenamu-ro 13-gil, Yongsan-gu, Seoul",
+      "jibun_address_ko": "서울특별시 용산구 이태원동 260-31",
+      "jibun_address_en": "260-31, Itaewon-dong, Yongsan-gu, Seoul",
+      "district_ko": "용산구",
+      "district_en": "Yongsan-gu",
+      "legal_dong_ko": "이태원동",
+      "legal_dong_en": "Itaewon-dong",
+      "zip_code": "04346",
+      "location": {
+        "lat": 37.53861,
+        "lng": 126.98983
+      }
+    },
+    {
+      "address_id": "ADR-017",
+      "building_type": "mixed_use",
+      "building_name_ko": "한남플레이스",
+      "building_name_en": "Hannam Place",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 용산구 한남대로20길 47",
+      "road_address_en": "47, Hannam-daero 20-gil, Yongsan-gu, Seoul",
+      "jibun_address_ko": "서울특별시 용산구 한남동 657-12",
+      "jibun_address_en": "657-12, Hannam-dong, Yongsan-gu, Seoul",
+      "district_ko": "용산구",
+      "district_en": "Yongsan-gu",
+      "legal_dong_ko": "한남동",
+      "legal_dong_en": "Hannam-dong",
+      "zip_code": "04418",
+      "location": {
+        "lat": 37.53605,
+        "lng": 127.00655
+      }
+    },
+    {
+      "address_id": "ADR-018",
+      "building_type": "apartment",
+      "building_name_ko": "새봄아파트",
+      "building_name_en": "Saebom Apt.",
+      "sub_buildings": [
+        "101동",
+        "102동",
+        "103동",
+        "104동",
+        "105동"
+      ],
+      "road_address_ko": "서울특별시 성동구 성수이로7길 30",
+      "road_address_en": "30, Seongsui-ro 7-gil, Seongdong-gu, Seoul",
+      "jibun_address_ko": "서울특별시 성동구 성수동2가 289-5",
+      "jibun_address_en": "289-5, Seongsu-dong 2-ga, Seongdong-gu, Seoul",
+      "district_ko": "성동구",
+      "district_en": "Seongdong-gu",
+      "legal_dong_ko": "성수동2가",
+      "legal_dong_en": "Seongsu-dong 2-ga",
+      "zip_code": "04799",
+      "location": {
+        "lat": 37.54036,
+        "lng": 127.05612
+      }
+    },
+    {
+      "address_id": "ADR-019",
+      "building_type": "apartment",
+      "building_name_ko": "새봄파크아파트",
+      "building_name_en": "Saebom Park Apt.",
+      "sub_buildings": [
+        "101동",
+        "102동",
+        "103동"
+      ],
+      "road_address_ko": "서울특별시 성동구 성수이로7길 41",
+      "road_address_en": "41, Seongsui-ro 7-gil, Seongdong-gu, Seoul",
+      "jibun_address_ko": "서울특별시 성동구 성수동2가 290-1",
+      "jibun_address_en": "290-1, Seongsu-dong 2-ga, Seongdong-gu, Seoul",
+      "district_ko": "성동구",
+      "district_en": "Seongdong-gu",
+      "legal_dong_ko": "성수동2가",
+      "legal_dong_en": "Seongsu-dong 2-ga",
+      "zip_code": "04799",
+      "location": {
+        "lat": 37.54091,
+        "lng": 127.05688
+      }
+    },
+    {
+      "address_id": "ADR-020",
+      "building_type": "officetel",
+      "building_name_ko": "루모스성수",
+      "building_name_en": "Lumos Seongsu",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 성동구 연무장길 54",
+      "road_address_en": "54, Yeonmujang-gil, Seongdong-gu, Seoul",
+      "jibun_address_ko": "서울특별시 성동구 성수동2가 315-77",
+      "jibun_address_en": "315-77, Seongsu-dong 2-ga, Seongdong-gu, Seoul",
+      "district_ko": "성동구",
+      "district_en": "Seongdong-gu",
+      "legal_dong_ko": "성수동2가",
+      "legal_dong_en": "Seongsu-dong 2-ga",
+      "zip_code": "04782",
+      "location": {
+        "lat": 37.54397,
+        "lng": 127.05731
+      }
+    },
+    {
+      "address_id": "ADR-021",
+      "building_type": "villa",
+      "building_name_ko": null,
+      "building_name_en": null,
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 성동구 뚝섬로1나길 17",
+      "road_address_en": "17, Ttukseom-ro 1na-gil, Seongdong-gu, Seoul",
+      "jibun_address_ko": "서울특별시 성동구 성수동1가 685-12",
+      "jibun_address_en": "685-12, Seongsu-dong 1-ga, Seongdong-gu, Seoul",
+      "district_ko": "성동구",
+      "district_en": "Seongdong-gu",
+      "legal_dong_ko": "성수동1가",
+      "legal_dong_en": "Seongsu-dong 1-ga",
+      "zip_code": "04780",
+      "location": {
+        "lat": 37.54712,
+        "lng": 127.04405
+      }
+    },
+    {
+      "address_id": "ADR-022",
+      "building_type": "office",
+      "building_name_ko": "성수포레스트타워",
+      "building_name_en": "Seongsu Forest Tower",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 성동구 성수이로22길 37",
+      "road_address_en": "37, Seongsui-ro 22-gil, Seongdong-gu, Seoul",
+      "jibun_address_ko": "서울특별시 성동구 성수동2가 280-3",
+      "jibun_address_en": "280-3, Seongsu-dong 2-ga, Seongdong-gu, Seoul",
+      "district_ko": "성동구",
+      "district_en": "Seongdong-gu",
+      "legal_dong_ko": "성수동2가",
+      "legal_dong_en": "Seongsu-dong 2-ga",
+      "zip_code": "04798",
+      "location": {
+        "lat": 37.54589,
+        "lng": 127.05652
+      }
+    },
+    {
+      "address_id": "ADR-023",
+      "building_type": "officetel",
+      "building_name_ko": "역삼아이비오피스텔",
+      "building_name_en": "Yeoksam Ivy Officetel",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 강남구 논현로85길 19",
+      "road_address_en": "19, Nonhyeon-ro 85-gil, Gangnam-gu, Seoul",
+      "jibun_address_ko": "서울특별시 강남구 역삼동 736-21",
+      "jibun_address_en": "736-21, Yeoksam-dong, Gangnam-gu, Seoul",
+      "district_ko": "강남구",
+      "district_en": "Gangnam-gu",
+      "legal_dong_ko": "역삼동",
+      "legal_dong_en": "Yeoksam-dong",
+      "zip_code": "06235",
+      "location": {
+        "lat": 37.49921,
+        "lng": 127.03012
+      }
+    },
+    {
+      "address_id": "ADR-024",
+      "building_type": "officetel",
+      "building_name_ko": "아이비역삼레지던스",
+      "building_name_en": "Ivy Yeoksam Residence",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 강남구 논현로86길 12",
+      "road_address_en": "12, Nonhyeon-ro 86-gil, Gangnam-gu, Seoul",
+      "jibun_address_ko": "서울특별시 강남구 역삼동 737-3",
+      "jibun_address_en": "737-3, Yeoksam-dong, Gangnam-gu, Seoul",
+      "district_ko": "강남구",
+      "district_en": "Gangnam-gu",
+      "legal_dong_ko": "역삼동",
+      "legal_dong_en": "Yeoksam-dong",
+      "zip_code": "06236",
+      "location": {
+        "lat": 37.49975,
+        "lng": 127.03091
+      }
+    },
+    {
+      "address_id": "ADR-025",
+      "building_type": "office",
+      "building_name_ko": "테헤란센터",
+      "building_name_en": "Teheran Center",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 강남구 테헤란로25길 20",
+      "road_address_en": "20, Teheran-ro 25-gil, Gangnam-gu, Seoul",
+      "jibun_address_ko": "서울특별시 강남구 역삼동 678-14",
+      "jibun_address_en": "678-14, Yeoksam-dong, Gangnam-gu, Seoul",
+      "district_ko": "강남구",
+      "district_en": "Gangnam-gu",
+      "legal_dong_ko": "역삼동",
+      "legal_dong_en": "Yeoksam-dong",
+      "zip_code": "06132",
+      "location": {
+        "lat": 37.50156,
+        "lng": 127.03634
+      }
+    },
+    {
+      "address_id": "ADR-026",
+      "building_type": "apartment",
+      "building_name_ko": "서초미래아파트",
+      "building_name_en": "Seocho Mirae Apt.",
+      "sub_buildings": [
+        "101동",
+        "102동"
+      ],
+      "road_address_ko": "서울특별시 서초구 서초대로73길 40",
+      "road_address_en": "40, Seocho-daero 73-gil, Seocho-gu, Seoul",
+      "jibun_address_ko": "서울특별시 서초구 서초동 1316-5",
+      "jibun_address_en": "1316-5, Seocho-dong, Seocho-gu, Seoul",
+      "district_ko": "서초구",
+      "district_en": "Seocho-gu",
+      "legal_dong_ko": "서초동",
+      "legal_dong_en": "Seocho-dong",
+      "zip_code": "06620",
+      "location": {
+        "lat": 37.49712,
+        "lng": 127.02398
+      }
+    },
+    {
+      "address_id": "ADR-027",
+      "building_type": "officetel",
+      "building_name_ko": null,
+      "building_name_en": null,
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 서초구 강남대로69길 11",
+      "road_address_en": "11, Gangnam-daero 69-gil, Seocho-gu, Seoul",
+      "jibun_address_ko": "서울특별시 서초구 서초동 1305-3",
+      "jibun_address_en": "1305-3, Seocho-dong, Seocho-gu, Seoul",
+      "district_ko": "서초구",
+      "district_en": "Seocho-gu",
+      "legal_dong_ko": "서초동",
+      "legal_dong_en": "Seocho-dong",
+      "zip_code": "06619",
+      "location": {
+        "lat": 37.49598,
+        "lng": 127.02687
+      }
+    },
+    {
+      "address_id": "ADR-028",
+      "building_type": "goshiwon",
+      "building_name_ko": "연세해피하우스",
+      "building_name_en": "Yonsei Happy House",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 서대문구 명물길 12",
+      "road_address_en": "12, Myeongmul-gil, Seodaemun-gu, Seoul",
+      "jibun_address_ko": "서울특별시 서대문구 창천동 18-30",
+      "jibun_address_en": "18-30, Changcheon-dong, Seodaemun-gu, Seoul",
+      "district_ko": "서대문구",
+      "district_en": "Seodaemun-gu",
+      "legal_dong_ko": "창천동",
+      "legal_dong_en": "Changcheon-dong",
+      "zip_code": "03779",
+      "location": {
+        "lat": 37.55733,
+        "lng": 126.93678
+      }
+    },
+    {
+      "address_id": "ADR-029",
+      "building_type": "villa",
+      "building_name_ko": null,
+      "building_name_en": null,
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 서대문구 신촌로12나길 9",
+      "road_address_en": "9, Sinchon-ro 12na-gil, Seodaemun-gu, Seoul",
+      "jibun_address_ko": "서울특별시 서대문구 창천동 52-41",
+      "jibun_address_en": "52-41, Changcheon-dong, Seodaemun-gu, Seoul",
+      "district_ko": "서대문구",
+      "district_en": "Seodaemun-gu",
+      "legal_dong_ko": "창천동",
+      "legal_dong_en": "Changcheon-dong",
+      "zip_code": "03786",
+      "location": {
+        "lat": 37.55615,
+        "lng": 126.93812
+      }
+    },
+    {
+      "address_id": "ADR-030",
+      "building_type": "officetel",
+      "building_name_ko": "노고산힐오피스텔",
+      "building_name_en": "Nogosan Hill Officetel",
+      "sub_buildings": [],
+      "road_address_ko": "서울특별시 마포구 신촌로24길 20",
+      "road_address_en": "20, Sinchon-ro 24-gil, Mapo-gu, Seoul",
+      "jibun_address_ko": "서울특별시 마포구 노고산동 31-87",
+      "jibun_address_en": "31-87, Nogosan-dong, Mapo-gu, Seoul",
+      "district_ko": "마포구",
+      "district_en": "Mapo-gu",
+      "legal_dong_ko": "노고산동",
+      "legal_dong_en": "Nogosan-dong",
+      "zip_code": "04107",
+      "location": {
+        "lat": 37.55498,
+        "lng": 126.93512
+      }
+    }
+  ]
+}

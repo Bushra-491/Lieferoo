@@ -1,0 +1,1549 @@
+{
+  "meta": {
+    "name": "Lieferoo sample orders",
+    "version": "1.1",
+    "updated": "2026-11-09",
+    "count": 24,
+    "snapshot_at": "2026-10-12T21:00:00+09:00",
+    "note": "Fictional orders for the 2days project. Names, phone numbers and notes are made up. Address fields are copies of B1 at order time.",
+    "spec": "B3_data_spec.md"
+  },
+  "orders": [
+    {
+      "order_id": "HN-20261012-0001",
+      "status": "delivering",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T20:18:00+09:00",
+      "picked_up_at": "2026-10-12T20:41:00+09:00",
+      "delivered_at": null,
+      "store": {
+        "store_id": "ST-01",
+        "name_ko": "연남 떡볶이",
+        "name_en": "Yeonnam Tteokbokki"
+      },
+      "customer": {
+        "customer_id": "CU-1042",
+        "display_name": "Maria G.",
+        "safe_number": "0504-0000-0001"
+      },
+      "delivery_address": {
+        "address_id": "ADR-002",
+        "address_type": "road",
+        "building_name_ko": "한빛마을2단지아파트",
+        "building_name_en": "Hanbit Village Complex 2 Apt.",
+        "road_address_ko": "서울특별시 마포구 동교로51길 10",
+        "road_address_en": "10, Donggyo-ro 51-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 연남동 240-15",
+        "jibun_address_en": "240-15, Yeonnam-dong, Mapo-gu, Seoul",
+        "detail": "1203, Bldg 101",
+        "location": {
+          "lat": 37.56342,
+          "lng": 126.92405
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_NO_RING",
+        "text": "Gate code is 4826#. Building 101 is the first one on the left from the main gate. Please don't ring the bell, baby sleeping"
+      },
+      "store_request": {
+        "text": "Not too spicy please",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "로제 떡볶이 (2인분)",
+          "name_en": "Rose tteokbokki (for 2)",
+          "qty": 1,
+          "unit_price_krw": 16000
+        },
+        {
+          "name_ko": "군만두",
+          "name_en": "Fried dumplings",
+          "qty": 1,
+          "unit_price_krw": 4500
+        }
+      ],
+      "subtotal_krw": 20500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 23500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-311",
+        "name_masked": "김*수"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0002",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T18:48:00+09:00",
+      "picked_up_at": "2026-10-12T19:10:00+09:00",
+      "delivered_at": "2026-10-12T19:44:00+09:00",
+      "store": {
+        "store_id": "ST-02",
+        "name_ko": "망원 치킨",
+        "name_en": "Mangwon Chicken"
+      },
+      "customer": {
+        "customer_id": "CU-2210",
+        "display_name": "Thao N.",
+        "safe_number": "0504-0000-0002"
+      },
+      "delivery_address": {
+        "address_id": "ADR-005",
+        "address_type": "jibun",
+        "building_name_ko": null,
+        "building_name_en": null,
+        "road_address_ko": "서울특별시 마포구 와우산로21길 19-7",
+        "road_address_en": "19-7, Wausan-ro 21-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 서교동 345-12",
+        "jibun_address_en": "345-12, Seogyo-dong, Mapo-gu, Seoul",
+        "detail": "3F",
+        "location": {
+          "lat": 37.55362,
+          "lng": 126.92418
+        }
+      },
+      "rider_request": {
+        "preset": "CALL_ON_ARRIVAL",
+        "text": "The building has no name. White building next to a small laundry. Door pw *2580"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "후라이드 치킨",
+          "name_en": "Fried chicken",
+          "qty": 1,
+          "unit_price_krw": 20000
+        }
+      ],
+      "subtotal_krw": 20000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 23000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-204",
+        "name_masked": "박*민"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0003",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T18:10:00+09:00",
+      "picked_up_at": "2026-10-12T18:32:00+09:00",
+      "delivered_at": "2026-10-12T19:24:00+09:00",
+      "store": {
+        "store_id": "ST-02",
+        "name_ko": "망원 치킨",
+        "name_en": "Mangwon Chicken"
+      },
+      "customer": {
+        "customer_id": "CU-3305",
+        "display_name": "Lucas M.",
+        "safe_number": "0504-0000-0003"
+      },
+      "delivery_address": {
+        "address_id": "ADR-009",
+        "address_type": "road",
+        "building_name_ko": "더스테이서교",
+        "building_name_en": "The Stay Seogyo",
+        "road_address_ko": "서울특별시 마포구 양화로16길 8",
+        "road_address_en": "8, Yanghwa-ro 16-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 서교동 358-3",
+        "jibun_address_en": "358-3, Seogyo-dong, Mapo-gu, Seoul",
+        "detail": "",
+        "location": {
+          "lat": 37.55542,
+          "lng": 126.91987
+        }
+      },
+      "rider_request": {
+        "preset": null,
+        "text": "Building B, 3F, door code 1234#"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": true
+      },
+      "items": [
+        {
+          "name_ko": "양념 치킨",
+          "name_en": "Yangnyeom chicken",
+          "qty": 1,
+          "unit_price_krw": 21000
+        },
+        {
+          "name_ko": "콜라 1.25L",
+          "name_en": "Coke 1.25L",
+          "qty": 1,
+          "unit_price_krw": 2500
+        }
+      ],
+      "subtotal_krw": 23500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 26500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-204",
+        "name_masked": "박*민"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0004",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T18:55:00+09:00",
+      "picked_up_at": "2026-10-12T19:18:00+09:00",
+      "delivered_at": "2026-10-12T19:39:00+09:00",
+      "store": {
+        "store_id": "ST-01",
+        "name_ko": "연남 떡볶이",
+        "name_en": "Yeonnam Tteokbokki"
+      },
+      "customer": {
+        "customer_id": "CU-0871",
+        "display_name": "Aiko S.",
+        "safe_number": "0504-0000-0004"
+      },
+      "delivery_address": {
+        "address_id": "ADR-003",
+        "address_type": "road",
+        "building_name_ko": "그린빌",
+        "building_name_en": "Green Ville",
+        "road_address_ko": "서울특별시 마포구 성미산로29길 15",
+        "road_address_en": "15, Seongmisan-ro 29-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 연남동 383-7",
+        "jibun_address_en": "383-7, Yeonnam-dong, Mapo-gu, Seoul",
+        "detail": "201号室",
+        "location": {
+          "lat": 37.56518,
+          "lng": 126.92268
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_NO_RING",
+        "text": "玄関の暗証番号は0415*です。ドアの前に置いてください。"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "떡볶이",
+          "name_en": "Tteokbokki",
+          "qty": 1,
+          "unit_price_krw": 7000
+        },
+        {
+          "name_ko": "김밥",
+          "name_en": "Gimbap",
+          "qty": 1,
+          "unit_price_krw": 4500
+        },
+        {
+          "name_ko": "순대",
+          "name_en": "Sundae",
+          "qty": 1,
+          "unit_price_krw": 6000
+        }
+      ],
+      "subtotal_krw": 17500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 20500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-311",
+        "name_masked": "김*수"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0005",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T19:02:00+09:00",
+      "picked_up_at": "2026-10-12T19:24:00+09:00",
+      "delivered_at": "2026-10-12T19:52:00+09:00",
+      "store": {
+        "store_id": "ST-01",
+        "name_ko": "연남 떡볶이",
+        "name_en": "Yeonnam Tteokbokki"
+      },
+      "customer": {
+        "customer_id": "CU-1977",
+        "display_name": "Priya R.",
+        "safe_number": "0504-0000-0005"
+      },
+      "delivery_address": {
+        "address_id": "ADR-004",
+        "address_type": "road",
+        "building_name_ko": "그린빌2차",
+        "building_name_en": "Green Ville 2",
+        "road_address_ko": "서울특별시 마포구 성미산로29길 15-3",
+        "road_address_en": "15-3, Seongmisan-ro 29-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 연남동 383-12",
+        "jibun_address_en": "383-12, Yeonnam-dong, Mapo-gu, Seoul",
+        "detail": "Flat 2B",
+        "location": {
+          "lat": 37.56531,
+          "lng": 126.92285
+        }
+      },
+      "rider_request": {
+        "preset": "HAND_TO_ME",
+        "text": "Green Ville 2 not Green Ville! It's the building at the back. Code #7788"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "로제 떡볶이 (2인분)",
+          "name_en": "Rose tteokbokki (for 2)",
+          "qty": 1,
+          "unit_price_krw": 16000
+        }
+      ],
+      "subtotal_krw": 16000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 19000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-117",
+        "name_masked": "이*준"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0006",
+      "status": "delivering",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T20:25:00+09:00",
+      "picked_up_at": "2026-10-12T20:47:00+09:00",
+      "delivered_at": null,
+      "store": {
+        "store_id": "ST-02",
+        "name_ko": "망원 치킨",
+        "name_en": "Mangwon Chicken"
+      },
+      "customer": {
+        "customer_id": "CU-4410",
+        "display_name": "Daniel K.",
+        "safe_number": "0504-0000-0006"
+      },
+      "delivery_address": {
+        "address_id": "ADR-008",
+        "address_type": "jibun",
+        "building_name_ko": "동교빌라",
+        "building_name_en": "Donggyo Villa",
+        "road_address_ko": "서울특별시 마포구 동교로38길 21",
+        "road_address_en": "21, Donggyo-ro 38-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 동교동 184-5",
+        "jibun_address_en": "184-5, Donggyo-dong, Mapo-gu, Seoul",
+        "detail": "Building B, 201",
+        "location": {
+          "lat": 37.55934,
+          "lng": 126.92518
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_RING",
+        "text": "The building in the back. Password 3690*"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "후라이드 치킨",
+          "name_en": "Fried chicken",
+          "qty": 1,
+          "unit_price_krw": 20000
+        },
+        {
+          "name_ko": "콜라 1.25L",
+          "name_en": "Coke 1.25L",
+          "qty": 1,
+          "unit_price_krw": 2500
+        }
+      ],
+      "subtotal_krw": 22500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 25500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-117",
+        "name_masked": "이*준"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0007",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T18:30:00+09:00",
+      "picked_up_at": "2026-10-12T18:52:00+09:00",
+      "delivered_at": "2026-10-12T19:15:00+09:00",
+      "store": {
+        "store_id": "ST-02",
+        "name_ko": "망원 치킨",
+        "name_en": "Mangwon Chicken"
+      },
+      "customer": {
+        "customer_id": "CU-5021",
+        "display_name": "Jun W.",
+        "safe_number": "0504-0000-0007"
+      },
+      "delivery_address": {
+        "address_id": "ADR-007",
+        "address_type": "road",
+        "building_name_ko": null,
+        "building_name_en": null,
+        "road_address_ko": "서울특별시 마포구 어울마당로5길 23",
+        "road_address_en": "23, Eoulmadang-ro 5-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 서교동 403-9",
+        "jibun_address_en": "403-9, Seogyo-dong, Mapo-gu, Seoul",
+        "detail": "1108",
+        "location": {
+          "lat": 37.55093,
+          "lng": 126.92131
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_NO_RING",
+        "text": "大门密码1357#，放门口就行，谢谢"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": true
+      },
+      "items": [
+        {
+          "name_ko": "양념 치킨",
+          "name_en": "Yangnyeom chicken",
+          "qty": 1,
+          "unit_price_krw": 21000
+        }
+      ],
+      "subtotal_krw": 21000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 24000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-204",
+        "name_masked": "박*민"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0008",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T20:05:00+09:00",
+      "picked_up_at": "2026-10-12T20:24:00+09:00",
+      "delivered_at": "2026-10-12T20:51:00+09:00",
+      "store": {
+        "store_id": "ST-01",
+        "name_ko": "연남 떡볶이",
+        "name_en": "Yeonnam Tteokbokki"
+      },
+      "customer": {
+        "customer_id": "CU-3388",
+        "display_name": "Amara O.",
+        "safe_number": "0504-0000-0008"
+      },
+      "delivery_address": {
+        "address_id": "ADR-010",
+        "address_type": "road",
+        "building_name_ko": null,
+        "building_name_en": null,
+        "road_address_ko": "서울특별시 마포구 연남로3길 8",
+        "road_address_en": "8, Yeonnam-ro 3-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 연남동 227-31",
+        "jibun_address_en": "227-31, Yeonnam-dong, Mapo-gu, Seoul",
+        "detail": "rooftop",
+        "location": {
+          "lat": 37.56105,
+          "lng": 126.92055
+        }
+      },
+      "rider_request": {
+        "preset": "CALL_ON_ARRIVAL",
+        "text": "Go up the outside stairs to the very top. My phone is broken pls knock loudly"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "떡볶이",
+          "name_en": "Tteokbokki",
+          "qty": 1,
+          "unit_price_krw": 7000
+        },
+        {
+          "name_ko": "군만두",
+          "name_en": "Fried dumplings",
+          "qty": 1,
+          "unit_price_krw": 4500
+        }
+      ],
+      "subtotal_krw": 11500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 14500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-311",
+        "name_masked": "김*수"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0009",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T18:40:00+09:00",
+      "picked_up_at": "2026-10-12T19:00:00+09:00",
+      "delivered_at": "2026-10-12T19:22:00+09:00",
+      "store": {
+        "store_id": "ST-03",
+        "name_ko": "이태원 버거하우스",
+        "name_en": "Itaewon Burger House"
+      },
+      "customer": {
+        "customer_id": "CU-6120",
+        "display_name": "Tom B.",
+        "safe_number": "0504-0000-0009"
+      },
+      "delivery_address": {
+        "address_id": "ADR-011",
+        "address_type": "road",
+        "building_name_ko": "그린빌",
+        "building_name_en": "Green Ville",
+        "road_address_ko": "서울특별시 용산구 보광로59길 12",
+        "road_address_en": "12, Bogwang-ro 59-gil, Yongsan-gu, Seoul",
+        "jibun_address_ko": "서울특별시 용산구 이태원동 34-87",
+        "jibun_address_en": "34-87, Itaewon-dong, Yongsan-gu, Seoul",
+        "detail": "B01",
+        "location": {
+          "lat": 37.53382,
+          "lng": 126.99251
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_RING",
+        "text": "No pickles please. Basement unit, stairs on the right side of the building"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "클래식 버거",
+          "name_en": "Classic burger",
+          "qty": 1,
+          "unit_price_krw": 9500
+        },
+        {
+          "name_ko": "감자튀김",
+          "name_en": "French fries",
+          "qty": 1,
+          "unit_price_krw": 4000
+        }
+      ],
+      "subtotal_krw": 13500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 16500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-402",
+        "name_masked": "정*우"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0010",
+      "status": "delivering",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T20:15:00+09:00",
+      "picked_up_at": "2026-10-12T20:38:00+09:00",
+      "delivered_at": null,
+      "store": {
+        "store_id": "ST-03",
+        "name_ko": "이태원 버거하우스",
+        "name_en": "Itaewon Burger House"
+      },
+      "customer": {
+        "customer_id": "CU-6544",
+        "display_name": "Sofia L.",
+        "safe_number": "0504-0000-0010"
+      },
+      "delivery_address": {
+        "address_id": "ADR-012",
+        "address_type": "road",
+        "building_name_ko": null,
+        "building_name_en": null,
+        "road_address_ko": "서울특별시 용산구 신흥로20길 37",
+        "road_address_en": "37, Sinheung-ro 20-gil, Yongsan-gu, Seoul",
+        "jibun_address_ko": "서울특별시 용산구 용산동2가 산2-14",
+        "jibun_address_en": "San 2-14, Yongsan-dong 2-ga, Yongsan-gu, Seoul",
+        "detail": "2nd floor, green door",
+        "location": {
+          "lat": 37.54452,
+          "lng": 126.98712
+        }
+      },
+      "rider_request": {
+        "preset": "HAND_TO_ME",
+        "text": "Haebangchon, up the hill from the church. Take the stairs between the two cafes, the house with the green door"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "치즈버거",
+          "name_en": "Cheeseburger",
+          "qty": 2,
+          "unit_price_krw": 10500
+        },
+        {
+          "name_ko": "감자튀김",
+          "name_en": "French fries",
+          "qty": 1,
+          "unit_price_krw": 4000
+        }
+      ],
+      "subtotal_krw": 25000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 28000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-402",
+        "name_masked": "정*우"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0011",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T18:20:00+09:00",
+      "picked_up_at": "2026-10-12T18:41:00+09:00",
+      "delivered_at": "2026-10-12T19:06:00+09:00",
+      "store": {
+        "store_id": "ST-03",
+        "name_ko": "이태원 버거하우스",
+        "name_en": "Itaewon Burger House"
+      },
+      "customer": {
+        "customer_id": "CU-7002",
+        "display_name": "Marco P.",
+        "safe_number": "0504-0000-0011"
+      },
+      "delivery_address": {
+        "address_id": "ADR-016",
+        "address_type": "jibun",
+        "building_name_ko": "하늘빌라",
+        "building_name_en": "Haneul Villa",
+        "road_address_ko": "서울특별시 용산구 회나무로13길 8",
+        "road_address_en": "8, Hoenamu-ro 13-gil, Yongsan-gu, Seoul",
+        "jibun_address_ko": "서울특별시 용산구 이태원동 260-31",
+        "jibun_address_en": "260-31, Itaewon-dong, Yongsan-gu, Seoul",
+        "detail": "301",
+        "location": {
+          "lat": 37.53861,
+          "lng": 126.98983
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_NO_RING",
+        "text": "Kyungridan-gil, building across from the pharmacy. Code 4521#"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "클래식 버거",
+          "name_en": "Classic burger",
+          "qty": 1,
+          "unit_price_krw": 9500
+        }
+      ],
+      "subtotal_krw": 9500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 12500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-402",
+        "name_masked": "정*우"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0012",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T19:10:00+09:00",
+      "picked_up_at": "2026-10-12T19:30:00+09:00",
+      "delivered_at": "2026-10-12T19:49:00+09:00",
+      "store": {
+        "store_id": "ST-07",
+        "name_ko": "한남 쌀국수",
+        "name_en": "Hannam Pho"
+      },
+      "customer": {
+        "customer_id": "CU-7215",
+        "display_name": "Fatima Z.",
+        "safe_number": "0504-0000-0012"
+      },
+      "delivery_address": {
+        "address_id": "ADR-014",
+        "address_type": "road",
+        "building_name_ko": "한남리버하우스",
+        "building_name_en": "Hannam River House",
+        "road_address_ko": "서울특별시 용산구 대사관로11길 30",
+        "road_address_en": "30, Daesagwan-ro 11-gil, Yongsan-gu, Seoul",
+        "jibun_address_ko": "서울특별시 용산구 한남동 726-14",
+        "jibun_address_en": "726-14, Hannam-dong, Yongsan-gu, Seoul",
+        "detail": "Unit 3",
+        "location": {
+          "lat": 37.53785,
+          "lng": 127.00398
+        }
+      },
+      "rider_request": {
+        "preset": "HAND_TO_ME",
+        "text": "No cilantro please. There is a security guard at the entrance, tell him unit 3. Please do not leave it with the guard"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "소고기 쌀국수",
+          "name_en": "Beef pho",
+          "qty": 2,
+          "unit_price_krw": 12000
+        },
+        {
+          "name_ko": "스프링롤",
+          "name_en": "Spring rolls",
+          "qty": 1,
+          "unit_price_krw": 6000
+        }
+      ],
+      "subtotal_krw": 30000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 33000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-415",
+        "name_masked": "한*진"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0013",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T19:05:00+09:00",
+      "picked_up_at": "2026-10-12T19:25:00+09:00",
+      "delivered_at": "2026-10-12T19:58:00+09:00",
+      "store": {
+        "store_id": "ST-04",
+        "name_ko": "성수 포케",
+        "name_en": "Seongsu Poke"
+      },
+      "customer": {
+        "customer_id": "CU-8031",
+        "display_name": "Aisha R.",
+        "safe_number": "0504-0000-0013"
+      },
+      "delivery_address": {
+        "address_id": "ADR-018",
+        "address_type": "jibun",
+        "building_name_ko": "새봄아파트",
+        "building_name_en": "Saebom Apt.",
+        "road_address_ko": "서울특별시 성동구 성수이로7길 30",
+        "road_address_en": "30, Seongsui-ro 7-gil, Seongdong-gu, Seoul",
+        "jibun_address_ko": "서울특별시 성동구 성수동2가 289-5",
+        "jibun_address_en": "289-5, Seongsu-dong 2-ga, Seongdong-gu, Seoul",
+        "detail": "102-1501",
+        "location": {
+          "lat": 37.54036,
+          "lng": 127.05612
+        }
+      },
+      "rider_request": {
+        "preset": "CALL_ON_ARRIVAL",
+        "text": "Lobby door: press 1501 and the call button, I will open it"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "연어 포케",
+          "name_en": "Salmon poke",
+          "qty": 1,
+          "unit_price_krw": 13500
+        },
+        {
+          "name_ko": "참치 포케",
+          "name_en": "Tuna poke",
+          "qty": 1,
+          "unit_price_krw": 13500
+        }
+      ],
+      "subtotal_krw": 27000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 30000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-520",
+        "name_masked": "윤*호"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0014",
+      "status": "delivering",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T20:30:00+09:00",
+      "picked_up_at": "2026-10-12T20:50:00+09:00",
+      "delivered_at": null,
+      "store": {
+        "store_id": "ST-04",
+        "name_ko": "성수 포케",
+        "name_en": "Seongsu Poke"
+      },
+      "customer": {
+        "customer_id": "CU-8156",
+        "display_name": "Emma D.",
+        "safe_number": "0504-0000-0014"
+      },
+      "delivery_address": {
+        "address_id": "ADR-019",
+        "address_type": "road",
+        "building_name_ko": "새봄파크아파트",
+        "building_name_en": "Saebom Park Apt.",
+        "road_address_ko": "서울특별시 성동구 성수이로7길 41",
+        "road_address_en": "41, Seongsui-ro 7-gil, Seongdong-gu, Seoul",
+        "jibun_address_ko": "서울특별시 성동구 성수동2가 290-1",
+        "jibun_address_en": "290-1, Seongsu-dong 2-ga, Seongdong-gu, Seoul",
+        "detail": "Bldg 102, Apt 1501",
+        "location": {
+          "lat": 37.54091,
+          "lng": 127.05688
+        }
+      },
+      "rider_request": {
+        "preset": "CALL_ON_ARRIVAL",
+        "text": "Saebom PARK, not Saebom Apt. Bikes can't enter above ground, use the underground entrance"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "연어 포케",
+          "name_en": "Salmon poke",
+          "qty": 2,
+          "unit_price_krw": 13500
+        }
+      ],
+      "subtotal_krw": 27000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 30000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-520",
+        "name_masked": "윤*호"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0015",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T18:05:00+09:00",
+      "picked_up_at": "2026-10-12T18:22:00+09:00",
+      "delivered_at": "2026-10-12T18:40:00+09:00",
+      "store": {
+        "store_id": "ST-04",
+        "name_ko": "성수 포케",
+        "name_en": "Seongsu Poke"
+      },
+      "customer": {
+        "customer_id": "CU-8290",
+        "display_name": "Kevin T.",
+        "safe_number": "0504-0000-0015"
+      },
+      "delivery_address": {
+        "address_id": "ADR-020",
+        "address_type": "road",
+        "building_name_ko": "루모스성수",
+        "building_name_en": "Lumos Seongsu",
+        "road_address_ko": "서울특별시 성동구 연무장길 54",
+        "road_address_en": "54, Yeonmujang-gil, Seongdong-gu, Seoul",
+        "jibun_address_ko": "서울특별시 성동구 성수동2가 315-77",
+        "jibun_address_en": "315-77, Seongsu-dong 2-ga, Seongdong-gu, Seoul",
+        "detail": "#715",
+        "location": {
+          "lat": 37.54397,
+          "lng": 127.05731
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_NO_RING",
+        "text": "Door code 2468*. Leave it in front of 715 please"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "참치 포케",
+          "name_en": "Tuna poke",
+          "qty": 1,
+          "unit_price_krw": 13500
+        }
+      ],
+      "subtotal_krw": 13500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 16500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-520",
+        "name_masked": "윤*호"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0016",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T19:25:00+09:00",
+      "picked_up_at": "2026-10-12T19:44:00+09:00",
+      "delivered_at": "2026-10-12T20:03:00+09:00",
+      "store": {
+        "store_id": "ST-05",
+        "name_ko": "역삼 분식당",
+        "name_en": "Yeoksam Bunsikdang"
+      },
+      "customer": {
+        "customer_id": "CU-9013",
+        "display_name": "Chloe H.",
+        "safe_number": "0504-0000-0016"
+      },
+      "delivery_address": {
+        "address_id": "ADR-023",
+        "address_type": "road",
+        "building_name_ko": "역삼아이비오피스텔",
+        "building_name_en": "Yeoksam Ivy Officetel",
+        "road_address_ko": "서울특별시 강남구 논현로85길 19",
+        "road_address_en": "19, Nonhyeon-ro 85-gil, Gangnam-gu, Seoul",
+        "jibun_address_ko": "서울특별시 강남구 역삼동 736-21",
+        "jibun_address_en": "736-21, Yeoksam-dong, Gangnam-gu, Seoul",
+        "detail": "1504",
+        "location": {
+          "lat": 37.49921,
+          "lng": 127.03012
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_NO_RING",
+        "text": "No spicy please. Ivy Officetel, NOT Ivy Residence. Code 5050#"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "라볶이",
+          "name_en": "Rabokki",
+          "qty": 1,
+          "unit_price_krw": 7500
+        },
+        {
+          "name_ko": "참치김밥",
+          "name_en": "Tuna gimbap",
+          "qty": 1,
+          "unit_price_krw": 5000
+        }
+      ],
+      "subtotal_krw": 12500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 15500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-633",
+        "name_masked": "서*연"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0017",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T20:10:00+09:00",
+      "picked_up_at": "2026-10-12T20:28:00+09:00",
+      "delivered_at": "2026-10-12T20:57:00+09:00",
+      "store": {
+        "store_id": "ST-05",
+        "name_ko": "역삼 분식당",
+        "name_en": "Yeoksam Bunsikdang"
+      },
+      "customer": {
+        "customer_id": "CU-9140",
+        "display_name": "Ali K.",
+        "safe_number": "0504-0000-0017"
+      },
+      "delivery_address": {
+        "address_id": "ADR-027",
+        "address_type": "road",
+        "building_name_ko": null,
+        "building_name_en": null,
+        "road_address_ko": "서울특별시 서초구 강남대로69길 11",
+        "road_address_en": "11, Gangnam-daero 69-gil, Seocho-gu, Seoul",
+        "jibun_address_ko": "서울특별시 서초구 서초동 1305-3",
+        "jibun_address_en": "1305-3, Seocho-dong, Seocho-gu, Seoul",
+        "detail": "Room 812",
+        "location": {
+          "lat": 37.49598,
+          "lng": 127.02687
+        }
+      },
+      "rider_request": {
+        "preset": "CALL_ON_ARRIVAL",
+        "text": "Gangnam station exit 9, 3 min walk. Building has no sign, glass door next to the pilates studio"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "떡볶이",
+          "name_en": "Tteokbokki",
+          "qty": 1,
+          "unit_price_krw": 7000
+        },
+        {
+          "name_ko": "어묵탕",
+          "name_en": "Fish cake soup",
+          "qty": 1,
+          "unit_price_krw": 6000
+        }
+      ],
+      "subtotal_krw": 13000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 16000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-633",
+        "name_masked": "서*연"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0018",
+      "status": "delivering",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T20:28:00+09:00",
+      "picked_up_at": "2026-10-12T20:52:00+09:00",
+      "delivered_at": null,
+      "store": {
+        "store_id": "ST-06",
+        "name_ko": "신촌 마라탕",
+        "name_en": "Sinchon Malatang"
+      },
+      "customer": {
+        "customer_id": "CU-9377",
+        "display_name": "Linh P.",
+        "safe_number": "0504-0000-0018"
+      },
+      "delivery_address": {
+        "address_id": "ADR-028",
+        "address_type": "road",
+        "building_name_ko": "연세해피하우스",
+        "building_name_en": "Yonsei Happy House",
+        "road_address_ko": "서울특별시 서대문구 명물길 12",
+        "road_address_en": "12, Myeongmul-gil, Seodaemun-gu, Seoul",
+        "jibun_address_ko": "서울특별시 서대문구 창천동 18-30",
+        "jibun_address_en": "18-30, Changcheon-dong, Seodaemun-gu, Seoul",
+        "detail": "Phòng 312",
+        "location": {
+          "lat": 37.55733,
+          "lng": 126.93678
+        }
+      },
+      "rider_request": {
+        "preset": null,
+        "text": "Để ở kệ giày tầng 3 giúp em nhé. Mật khẩu cửa 1919*"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "마라탕",
+          "name_en": "Malatang",
+          "qty": 1,
+          "unit_price_krw": 11000
+        },
+        {
+          "name_ko": "꿔바로우",
+          "name_en": "Guobaorou",
+          "qty": 1,
+          "unit_price_krw": 15000
+        }
+      ],
+      "subtotal_krw": 26000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 29000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-701",
+        "name_masked": "임*희"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0019",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T19:00:00+09:00",
+      "picked_up_at": "2026-10-12T19:19:00+09:00",
+      "delivered_at": "2026-10-12T19:35:00+09:00",
+      "store": {
+        "store_id": "ST-06",
+        "name_ko": "신촌 마라탕",
+        "name_en": "Sinchon Malatang"
+      },
+      "customer": {
+        "customer_id": "CU-9402",
+        "display_name": "Ben S.",
+        "safe_number": "0504-0000-0019"
+      },
+      "delivery_address": {
+        "address_id": "ADR-030",
+        "address_type": "jibun",
+        "building_name_ko": "노고산힐오피스텔",
+        "building_name_en": "Nogosan Hill Officetel",
+        "road_address_ko": "서울특별시 마포구 신촌로24길 20",
+        "road_address_en": "20, Sinchon-ro 24-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 노고산동 31-87",
+        "jibun_address_en": "31-87, Nogosan-dong, Mapo-gu, Seoul",
+        "detail": "604",
+        "location": {
+          "lat": 37.55498,
+          "lng": 126.93512
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_RING",
+        "text": "mun ape dueseyo. bimilbeonho 6262 byeol"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "마라탕",
+          "name_en": "Malatang",
+          "qty": 1,
+          "unit_price_krw": 11000
+        }
+      ],
+      "subtotal_krw": 11000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 14000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-701",
+        "name_masked": "임*희"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0020",
+      "status": "delivered",
+      "app_language": "en",
+      "ordered_at": "2026-10-12T12:05:00+09:00",
+      "picked_up_at": "2026-10-12T12:22:00+09:00",
+      "delivered_at": "2026-10-12T12:41:00+09:00",
+      "store": {
+        "store_id": "ST-05",
+        "name_ko": "역삼 분식당",
+        "name_en": "Yeoksam Bunsikdang"
+      },
+      "customer": {
+        "customer_id": "CU-9518",
+        "display_name": "Olivia W.",
+        "safe_number": "0504-0000-0020"
+      },
+      "delivery_address": {
+        "address_id": "ADR-025",
+        "address_type": "road",
+        "building_name_ko": "테헤란센터",
+        "building_name_en": "Teheran Center",
+        "road_address_ko": "서울특별시 강남구 테헤란로25길 20",
+        "road_address_en": "20, Teheran-ro 25-gil, Gangnam-gu, Seoul",
+        "jibun_address_ko": "서울특별시 강남구 역삼동 678-14",
+        "jibun_address_en": "678-14, Yeoksam-dong, Gangnam-gu, Seoul",
+        "detail": "8F, Nexus Labs",
+        "location": {
+          "lat": 37.50156,
+          "lng": 127.03634
+        }
+      },
+      "rider_request": {
+        "preset": "HAND_TO_ME",
+        "text": "Riders can't go up to the office floors. Please call me and I'll come down to the lobby"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "라볶이",
+          "name_en": "Rabokki",
+          "qty": 1,
+          "unit_price_krw": 7500
+        },
+        {
+          "name_ko": "김밥",
+          "name_en": "Gimbap",
+          "qty": 2,
+          "unit_price_krw": 4500
+        }
+      ],
+      "subtotal_krw": 16500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 19500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-633",
+        "name_masked": "서*연"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0021",
+      "status": "delivered",
+      "app_language": "ko",
+      "ordered_at": "2026-10-12T18:50:00+09:00",
+      "picked_up_at": "2026-10-12T19:12:00+09:00",
+      "delivered_at": "2026-10-12T19:28:00+09:00",
+      "store": {
+        "store_id": "ST-01",
+        "name_ko": "연남 떡볶이",
+        "name_en": "Yeonnam Tteokbokki"
+      },
+      "customer": {
+        "customer_id": "CU-0102",
+        "display_name": "김*연",
+        "safe_number": "0504-0000-0021"
+      },
+      "delivery_address": {
+        "address_id": "ADR-001",
+        "address_type": "road",
+        "building_name_ko": "한빛마을1단지아파트",
+        "building_name_en": "Hanbit Village Complex 1 Apt.",
+        "road_address_ko": "서울특별시 마포구 성미산로17길 24",
+        "road_address_en": "24, Seongmisan-ro 17-gil, Mapo-gu, Seoul",
+        "jibun_address_ko": "서울특별시 마포구 연남동 239-2",
+        "jibun_address_en": "239-2, Yeonnam-dong, Mapo-gu, Seoul",
+        "detail": "101동 1203호",
+        "location": {
+          "lat": 37.56281,
+          "lng": 126.92312
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_RING",
+        "text": "공동현관 #3579* 입니다"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "로제 떡볶이 (2인분)",
+          "name_en": "Rose tteokbokki (for 2)",
+          "qty": 1,
+          "unit_price_krw": 16000
+        },
+        {
+          "name_ko": "순대",
+          "name_en": "Sundae",
+          "qty": 1,
+          "unit_price_krw": 6000
+        }
+      ],
+      "subtotal_krw": 22000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 25000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-311",
+        "name_masked": "김*수"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0022",
+      "status": "delivered",
+      "app_language": "ko",
+      "ordered_at": "2026-10-12T19:40:00+09:00",
+      "picked_up_at": "2026-10-12T19:58:00+09:00",
+      "delivered_at": "2026-10-12T20:12:00+09:00",
+      "store": {
+        "store_id": "ST-05",
+        "name_ko": "역삼 분식당",
+        "name_en": "Yeoksam Bunsikdang"
+      },
+      "customer": {
+        "customer_id": "CU-0215",
+        "display_name": "이*호",
+        "safe_number": "0504-0000-0022"
+      },
+      "delivery_address": {
+        "address_id": "ADR-024",
+        "address_type": "road",
+        "building_name_ko": "아이비역삼레지던스",
+        "building_name_en": "Ivy Yeoksam Residence",
+        "road_address_ko": "서울특별시 강남구 논현로86길 12",
+        "road_address_en": "12, Nonhyeon-ro 86-gil, Gangnam-gu, Seoul",
+        "jibun_address_ko": "서울특별시 강남구 역삼동 737-3",
+        "jibun_address_en": "737-3, Yeoksam-dong, Gangnam-gu, Seoul",
+        "detail": "803호",
+        "location": {
+          "lat": 37.49975,
+          "lng": 127.03091
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_NO_RING",
+        "text": ""
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": true
+      },
+      "items": [
+        {
+          "name_ko": "참치김밥",
+          "name_en": "Tuna gimbap",
+          "qty": 2,
+          "unit_price_krw": 5000
+        }
+      ],
+      "subtotal_krw": 10000,
+      "delivery_fee_krw": 3000,
+      "total_krw": 13000,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-633",
+        "name_masked": "서*연"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0023",
+      "status": "delivering",
+      "app_language": "ko",
+      "ordered_at": "2026-10-12T20:20:00+09:00",
+      "picked_up_at": "2026-10-12T20:43:00+09:00",
+      "delivered_at": null,
+      "store": {
+        "store_id": "ST-04",
+        "name_ko": "성수 포케",
+        "name_en": "Seongsu Poke"
+      },
+      "customer": {
+        "customer_id": "CU-0330",
+        "display_name": "박*진",
+        "safe_number": "0504-0000-0023"
+      },
+      "delivery_address": {
+        "address_id": "ADR-021",
+        "address_type": "road",
+        "building_name_ko": null,
+        "building_name_en": null,
+        "road_address_ko": "서울특별시 성동구 뚝섬로1나길 17",
+        "road_address_en": "17, Ttukseom-ro 1na-gil, Seongdong-gu, Seoul",
+        "jibun_address_ko": "서울특별시 성동구 성수동1가 685-12",
+        "jibun_address_en": "685-12, Seongsu-dong 1-ga, Seongdong-gu, Seoul",
+        "detail": "2층 왼쪽 집",
+        "location": {
+          "lat": 37.54712,
+          "lng": 127.04405
+        }
+      },
+      "rider_request": {
+        "preset": "LEAVE_AT_DOOR_RING",
+        "text": "파란 대문 집이에요. 대문 열려 있어요"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "연어 포케",
+          "name_en": "Salmon poke",
+          "qty": 1,
+          "unit_price_krw": 13500
+        }
+      ],
+      "subtotal_krw": 13500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 16500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-520",
+        "name_masked": "윤*호"
+      }
+    },
+    {
+      "order_id": "HN-20261012-0024",
+      "status": "delivered",
+      "app_language": "ko",
+      "ordered_at": "2026-10-12T18:35:00+09:00",
+      "picked_up_at": "2026-10-12T18:51:00+09:00",
+      "delivered_at": "2026-10-12T19:09:00+09:00",
+      "store": {
+        "store_id": "ST-05",
+        "name_ko": "역삼 분식당",
+        "name_en": "Yeoksam Bunsikdang"
+      },
+      "customer": {
+        "customer_id": "CU-0447",
+        "display_name": "최*아",
+        "safe_number": "0504-0000-0024"
+      },
+      "delivery_address": {
+        "address_id": "ADR-026",
+        "address_type": "road",
+        "building_name_ko": "서초미래아파트",
+        "building_name_en": "Seocho Mirae Apt.",
+        "road_address_ko": "서울특별시 서초구 서초대로73길 40",
+        "road_address_en": "40, Seocho-daero 73-gil, Seocho-gu, Seoul",
+        "jibun_address_ko": "서울특별시 서초구 서초동 1316-5",
+        "jibun_address_en": "1316-5, Seocho-dong, Seocho-gu, Seoul",
+        "detail": "102동 704호",
+        "location": {
+          "lat": 37.49712,
+          "lng": 127.02398
+        }
+      },
+      "rider_request": {
+        "preset": "CALL_ON_ARRIVAL",
+        "text": "지상으로 오토바이 진입 안 돼요. 지하주차장으로 와주세요"
+      },
+      "store_request": {
+        "text": "",
+        "no_cutlery": false
+      },
+      "items": [
+        {
+          "name_ko": "떡볶이",
+          "name_en": "Tteokbokki",
+          "qty": 1,
+          "unit_price_krw": 7000
+        },
+        {
+          "name_ko": "김밥",
+          "name_en": "Gimbap",
+          "qty": 1,
+          "unit_price_krw": 4500
+        }
+      ],
+      "subtotal_krw": 11500,
+      "delivery_fee_krw": 3000,
+      "total_krw": 14500,
+      "payment": {
+        "method": "card",
+        "status": "paid"
+      },
+      "rider": {
+        "rider_id": "RD-633",
+        "name_masked": "서*연"
+      }
+    }
+  ]
+}
