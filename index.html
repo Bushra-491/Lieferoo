@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lieferoo - Dashboard Preview</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            width: 380px;
+            text-align: center;
+        }
+        h1 {
+            color: #ff5722;
+            margin-bottom: 0.2rem;
+            font-size: 1.8rem;
+        }
+        p.subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1.5rem;
+        }
+        .stat-box {
+            background: #fff8f6;
+            border: 1px solid #ffdcd0;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 42%;
+        }
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 0.3rem;
+        }
+        .meta-info {
+            font-size: 0.8rem;
+            color: #777;
+            background: #f9f9f9;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .status {
+            font-size: 0.85rem;
+            color: #2e7d32;
+            background: #e8f5e9;
+            padding: 0.5rem;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
 
+    <div class="card">
+        <h1>Lieferoo</h1>
+        <p class="subtitle">Dataset Connectivity Dashboard</p>
+        
+        <div class="stats-container">
+            <div class="stat-box">
+                <div id="address-count" class="stat-number">...</div>
+                <div class="stat-label">Addresses</div>
+            </div>
+            <div class="stat-box">
+                <div id="order-count" class="stat-number">...</div>
+                <div class="stat-label">Orders</div>
+            </div>
+        </div>
+
+        <div class="meta-info" id="meta-details">
+            Loading metadata version...
+        </div>
+
+        <div id="status-message" class="status">Connecting to JSON files...</div>
+    </div>
+
+    <script>
+        async function loadData() {
+            try {
+                // Fetching both JSON files concurrently from the data/ folder
+                const [addressRes, orderRes] = await Promise.all([
+                    fetch('./data/B1_sample_addresses.json'),
+                    fetch('./data/B2_sample_orders.json')
+                ]);
+
+                if (!addressRes.ok || !orderRes.ok) {
+                    throw new Error("Failed to load one or more JSON files.");
+                }
+
+                const addressData = await addressRes.json();
+                const orderData = await orderRes.json();
+
+                // Extracting counts correctly based on your JSON structure (nested under arrays)
+                const addressesCount = addressData.addresses ? addressData.addresses.length : 0;
+                const ordersCount = orderData.orders ? orderData.orders.length : 0;
+
+                // Update UI with real counts
+                document.getElementById('address-count').innerText = addressesCount;
+                document.getElementById('order-count').innerText = ordersCount;
+
+                // Display version info from metadata
+                document.getElementById('meta-details').innerHTML = `
+                    <b>Data Spec:</b> ${addressData.meta.spec}<br>
+                    <b>Version:</b> Addresses v${addressData.meta.version} | Orders v${orderData.meta.version}<br>
+                    <b>Snapshot:</b> ${orderData.meta.snapshot_at ? orderData.meta.snapshot_at.replace('T', ' ') : 'N/A'}
+                `;
+
+                document.getElementById('status-message').innerText = "Successfully connected to sample data!";
+            } catch (error) {
+                console.error(error);
+                document.getElementById('status-message').style.background = "#ffebee";
+                document.getElementById('status-message').style.color = "#c62828";
+                document.getElementById('status-message').innerText = "Error loading data. Check file paths.";
+            }
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
