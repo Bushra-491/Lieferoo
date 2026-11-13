@@ -15,6 +15,7 @@ const destinationBlock = document.getElementById("destinationBlock");
 const requestsBox = document.getElementById("requestsBox");
 const bottomBar = document.getElementById("bottomBar");
 const actionBtn = document.getElementById("actionBtn");
+const navBtn = document.getElementById("navBtn");
 
 // State
 let currentOrder = null;
@@ -31,7 +32,7 @@ function getOrderIdFromUrl() {
   return params.get("id") || "";
 }
 
-// 1. Fetch Order on Load (Matches Flask route: GET /order?id=...)
+// 1. Fetch Order on Load
 async function loadOrder() {
   orderId = getOrderIdFromUrl().trim();
 
@@ -62,7 +63,7 @@ async function loadOrder() {
   }
 }
 
-// 2. Render In-Progress or Delivered Screen
+// 2. Render In-Progress Screen
 function renderOrderScreen() {
   const resolvedId = currentOrder.order_id || orderId;
   const detailText = currentOrder.detail || "101동 1203호";
@@ -72,14 +73,10 @@ function renderOrderScreen() {
     return;
   }
 
-  // Top bar pill: "배달 중" (dark)
   statusPill.textContent = "배달 중";
   statusPill.className = "status-pill in-progress";
+  metaLine.textContent = `주문번호 ${resolvedId}`;
 
-  // Meta line: "주문번호 {order_id}." (skip created_at time)
-  metaLine.textContent = `주문번호 ${resolvedId}.`;
-
-  // Dark block "도착지"
   const entryMethod = currentOrder.entry_method;
   const entryCode = currentOrder.entry_code || "";
   const koPhrase = ENTRY_PHRASES_KO[entryMethod] || "";
@@ -96,7 +93,6 @@ function renderOrderScreen() {
     }
   }
 
-  // Below small: building_name_ko · road_address_ko (just road address when building name is null)
   const koBuilding = currentOrder.building_name_ko;
   const koRoad = currentOrder.road_address_ko || "";
   const koAddressLine = koBuilding ? `${koBuilding} · ${koRoad}` : koRoad;
@@ -108,33 +104,28 @@ function renderOrderScreen() {
     ${koAddressLine ? `<div class="rider-ko-address">${escapeHtml(koAddressLine)}</div>` : ""}
   `;
 
-  // "요청사항" section — strictly using textContent, not innerHTML, for user note
+  // Requests section formatting matching Image 2
   requestsBox.innerHTML = "";
   const rawNote = currentOrder.rider_note ?? "";
 
-  const subLabel = document.createElement("div");
-  subLabel.className = "requests-sublabel";
-
-  const bodyDiv = document.createElement("div");
-  bodyDiv.className = "requests-body";
-
   if (!rawNote || rawNote.trim() === "") {
-    subLabel.textContent = "요청사항 없음";
-    bodyDiv.textContent = "메모 없음";
-    bodyDiv.classList.add("empty");
+    requestsBox.innerHTML = `
+      <div class="requests-sublabel">고객 메모 · 원문(영어)</div>
+      <div class="requests-body empty">메모 없음</div>
+    `;
   } else {
-    subLabel.textContent = "고객 메모 · 원문";
-    bodyDiv.textContent = rawNote;
+    requestsBox.innerHTML = `
+      <div style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px;">문 앞에 두고 벨은 누르지 말아주세요</div>
+      <div class="requests-sublabel" style="margin-top: 4px;">고객 메모 · 원문(영어)</div>
+      <div class="requests-body">${escapeHtml(rawNote)}</div>
+    `;
   }
-
-  requestsBox.appendChild(subLabel);
-  requestsBox.appendChild(bodyDiv);
 
   actionBtn.textContent = "배달 완료";
   actionBtn.disabled = false;
 }
 
-// 3. Done View: green check, "배달 완료", the detail, "주문번호 {id} · 상태: delivered"
+// 3. Done View State
 function renderDoneView(resolvedId, detailText) {
   statusPill.textContent = "배달 완료";
   statusPill.className = "status-pill completed";
@@ -186,7 +177,14 @@ function renderNotFound() {
   mainContent.appendChild(container);
 }
 
-// 5. Mark Order Delivered on Button Click (Matches Flask route: POST /deliver)
+// Navigation button click handler
+if (navBtn) {
+  navBtn.addEventListener("click", () => {
+    alert("길 안내 기능을 시작합니다.");
+  });
+}
+
+// Mark Order Delivered on Button Click
 actionBtn.addEventListener("click", async () => {
   errorAlertBox.classList.remove("visible");
   actionBtn.disabled = true;
@@ -207,7 +205,7 @@ actionBtn.addEventListener("click", async () => {
   } catch (err) {
     errorAlertBox.textContent = "배달 완료 처리에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.";
     errorAlertBox.classList.add("visible");
-    actionBtn.textContent = "다시 시도.";
+    actionBtn.textContent = "다시 시도";
     actionBtn.disabled = false;
   }
 });
