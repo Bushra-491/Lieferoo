@@ -20,6 +20,12 @@ const actionBtn = document.getElementById("actionBtn");
 let currentOrder = null;
 let orderId = "";
 
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
 function getOrderIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return params.get("id") || "";
@@ -29,7 +35,7 @@ function getOrderIdFromUrl() {
 async function loadOrder() {
   orderId = getOrderIdFromUrl().trim();
 
-  if (!orderId) {
+  if (!orderId || orderId === "undefined" || orderId === "null") {
     renderNotFound();
     return;
   }
@@ -45,13 +51,14 @@ async function loadOrder() {
     const data = await res.json();
     currentOrder = data.order || data;
 
-    if (!currentOrder || (!currentOrder.order_id && !currentOrder.id)) {
+    if (!currentOrder || typeof currentOrder !== "object") {
       renderNotFound();
       return;
     }
 
     renderOrderScreen();
   } catch (err) {
+    console.error("Failed to load order:", err);
     renderNotFound();
   }
 }
@@ -188,7 +195,6 @@ actionBtn.addEventListener("click", async () => {
   const encodedId = encodeURIComponent(orderId);
 
   try {
-    // Try POST /orders/:id/deliver first; fall back to PATCH /orders/:id if needed
     let res = await fetch(`/orders/${encodedId}/deliver`, {
       method: "POST",
       headers: { "Content-Type": "application/json" }
