@@ -1,0 +1,138 @@
+/* 1. Load Noto Sans KR from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+:root {
+  /* 2. Color Tokens (Lieferoo Spec Board) */
+  --primary: #C8410B;
+  --primary-pressed: #A33608;
+  --primary-subtle: #FFF3EC;
+
+  --text: #1A1A1A;
+  --text-sub: #666666;
+  --text-disabled: #B3B3B3;
+  --text-on-primary: #FFFFFF;
+
+  --surface: #FFFFFF;
+  --band: #F3F3F3;
+  --border: #D9D9D9;
+  --divider: #E9E9E9;
+
+  --error: #D93025;
+  --success: #1F8A4C;
+  --warning: #B87400;
+  --info: #2563C9;
+  --rider-block: #1A1A1A;
+
+  /* 3. Typography */
+  --font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* 4. Spacing Steps (px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* 5. Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-pill: 9999px;
+
+  /* 6. Component Heights & Frame Dimensions */
+  --height-topbar: 56px;
+  --height-btn-lg: 52px;
+  --height-input: 48px;
+  --frame-width: 375px;
+  --frame-height: 812px;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text);
+  background-color: var(--band);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* 375x812 Mobile App Frame */
+.app-frame {
+  width: var(--frame-width);
+  min-height: var(--frame-height);
+  background-color: var(--surface);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Top Bar (56px) */
+.top-bar {
+  height: var(--height-topbar);
+  padding: 0 var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--divider);
+  background-color: var(--surface);
+}
+
+/* Standard Input (48px) */
+.input-field {
+  height: var(--height-input);
+  width: 100%;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  color: var(--text);
+  background-color: var(--surface);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input-field::placeholder {
+  color: var(--text-disabled);
+}
+
+.input-field:focus {
+  border-color: var(--primary);
+}
+
+/* Big Button (52px, 16px from both sides) */
+.btn-big {
+  height: var(--height-btn-lg);
+  width: calc(100% - (var(--space-4) * 2));
+  margin: 0 var(--space-4);
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.btn-big:hover,
+.btn-big:active {
+  background-color: var(--primary-pressed);
+}
+
+.btn-big:disabled {
+  background-color: var(--band);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
