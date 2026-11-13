@@ -30,7 +30,7 @@
     <div id="error-msg"></div>
     <div id="success-msg"></div>
 
-    <form id="order-form">
+    <form id="order-form" novalidate>
         <!-- Address Dropdown -->
         <div class="form-group">
             <label for="address_id">Delivery Address</label>
@@ -51,9 +51,9 @@
             <label>Entry Method</label>
             <div class="radio-group" id="entry-methods">
                 <label class="radio-option"><input type="radio" name="entry_method" value="door_code" checked> Door code</label>
-                <label class="radio-option"><input type="radio" name="entry_method" value="intercom"> Call the unit at the entrance</label>
-                <label class="radio-option"><input type="radio" name="entry_method" value="security"> Ask at the security desk</label>
-                <label class="radio-option"><input type="radio" name="entry_method" value="none"> No code needed</label>
+                <label class="radio-option"><input type="radio" name="entry_method" value="call"> Call the unit at the entrance</label>
+                <label class="radio-option"><input type="radio" name="entry_method" value="security_desk"> Ask at the security desk</label>
+                <label class="radio-option"><input type="radio" name="entry_method" value="free"> No code needed</label>
             </div>
         </div>
 
@@ -75,7 +75,7 @@
 </div>
 
 <script>
-    // 1. Fetch addresses on load
+    // 1. Fetch addresses on load (Cleaned address label display)
     async function loadAddresses() {
         const select = document.getElementById('address_id');
         try {
@@ -87,7 +87,7 @@
                 data.addresses.forEach(addr => {
                     const opt = document.createElement('option');
                     opt.value = addr.address_id;
-                    opt.text = `${addr.road_address_en || addr.road_address_ko} (${addr.district_en || ''})`;
+                    opt.text = addr.road_address_en || addr.road_address_ko;
                     select.appendChild(opt);
                 });
             } else {
@@ -122,7 +122,7 @@
         charCounter.textContent = `${len}/200`;
     });
 
-    // Error & Success Handlers
+    // Error & Success Handlers with auto-scroll
     function clearMessages() {
         const errDiv = document.getElementById('error-msg');
         errDiv.textContent = '';
@@ -135,6 +135,7 @@
         errDiv.textContent = msg;
         errDiv.style.display = 'block';
         document.getElementById('success-msg').style.display = 'none';
+        errDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     function showSuccess(orderId) {
@@ -145,6 +146,7 @@
         document.getElementById('order-form').reset();
         doorCodeGroup.style.display = 'block';
         charCounter.textContent = '0/200';
+        succDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     // 4. Form Submission
