@@ -1,9 +1,9 @@
 // Korean phrase mapping for rider preview chip
 const ENTRY_PHRASES_KO = {
   door_code: "공동현관 비밀번호",
-  call: "세대 호출",
+  call: "공동현관 호출",
   security_desk: "경비실 호출/방문",
-  free: "자유 출입 가능"
+  free: "자유 출입"
 };
 
 const ENTRY_LABELS_EN = {
@@ -12,6 +12,13 @@ const ENTRY_LABELS_EN = {
   security_desk: "Security desk",
   free: "No code needed"
 };
+
+// Key SVG icon for preview block
+const KEY_ICON_SVG = `
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+    <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+  </svg>
+`;
 
 // DOM Elements
 const addressPicker = document.getElementById("addressPicker");
@@ -187,15 +194,26 @@ function renderPreview() {
   }
 
   const detailText = bVal || "101동 1203호";
-  let chipText = "";
+  let blockHtml = "";
   let captionMethodText = "";
 
   if (entryVal) {
-    chipText = ENTRY_PHRASES_KO[entryVal];
+    const koPhrase = ENTRY_PHRASES_KO[entryVal];
     captionMethodText = ENTRY_LABELS_EN[entryVal];
     if (entryVal === "door_code" && dVal) {
-      chipText += ` ${dVal}`;
       captionMethodText += ` ${dVal}`;
+      blockHtml = `
+        <div style="background-color: #FFA97F; border-radius: 8px; height: 48px; padding: 0 12px; display: flex; align-items: center; color: #1A1A1A;">
+          <span>${KEY_ICON_SVG}<strong>${escapeHtml(koPhrase)}</strong></span>
+          <span style="font-size: 24px; font-weight: 700; margin-left: auto;">${escapeHtml(dVal)}</span>
+        </div>
+      `;
+    } else {
+      blockHtml = `
+        <div style="align-self: flex-start; background-color: #FFA97F; border-radius: 8px; padding: 6px 12px; font-size: 14px; font-weight: 700; color: #1A1A1A;">
+          ${KEY_ICON_SVG}${escapeHtml(koPhrase)}
+        </div>
+      `;
     }
   }
 
@@ -210,7 +228,7 @@ function renderPreview() {
     <div class="rider-dark-card">
       <div class="rider-tag-small">도착지</div>
       <div class="rider-detail-big">${escapeHtml(detailText)}</div>
-      ${chipText ? `<div class="rider-orange-chip">${escapeHtml(chipText)}</div>` : ""}
+      ${blockHtml}
       <div class="rider-ko-address">${escapeHtml(koAddressLine)}</div>
     </div>
     <p class="preview-caption" style="margin-top: 8px;">
@@ -284,8 +302,9 @@ saveBtn.addEventListener("click", () => {
     return;
   }
 
-  // Save data to localStorage so index.html can pick it up immediately
+  // Save data including address_id so checkout and backend order creation work smoothly
   const savedData = {
+    address_id: selectedAddress ? selectedAddress.address_id : "ADR-001",
     title: selectedAddress ? (selectedAddress.building_name_en || selectedAddress.road_address_en) : "Hanbit Village Complex 2 Apt.",
     sub: selectedAddress ? selectedAddress.road_address_en : "10, Donggyo-ro 51-gil, Mapo-gu, Seoul",
     buildingUnit: buildingUnit.value.trim(),
