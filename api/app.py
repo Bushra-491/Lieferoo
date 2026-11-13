@@ -9,10 +9,12 @@ app = Flask(__name__)
 def ping():
     return 'pong'
 
+def get_conn():
+    return psycopg.connect(os.environ["DATABASE_URL"])
+
 @app.route('/db-check')
 def db_check():
-    database_url = os.environ["DATABASE_URL"]
-    with psycopg.connect(database_url) as conn:
+    with get_conn() as conn:
         res = conn.execute("SELECT 1").fetchone()
     return str(res[0])
 
