@@ -31,7 +31,7 @@ function getOrderIdFromUrl() {
   return params.get("id") || "";
 }
 
-// 1. Fetch Order on Load using encodeURIComponent
+// 1. Fetch Order on Load (Matches Flask route: GET /order?id=...)
 async function loadOrder() {
   orderId = getOrderIdFromUrl().trim();
 
@@ -41,7 +41,7 @@ async function loadOrder() {
   }
 
   try {
-    const res = await fetch(`/orders/${encodeURIComponent(orderId)}`);
+    const res = await fetch(`/order?id=${encodeURIComponent(orderId)}`);
 
     if (!res.ok) {
       renderNotFound();
@@ -51,22 +51,21 @@ async function loadOrder() {
     const data = await res.json();
     currentOrder = data.order || data;
 
-    if (!currentOrder || typeof currentOrder !== "object") {
+    if (!currentOrder || !currentOrder.order_id) {
       renderNotFound();
       return;
     }
 
     renderOrderScreen();
   } catch (err) {
-    console.error("Failed to load order:", err);
     renderNotFound();
   }
 }
 
 // 2. Render In-Progress or Delivered Screen
 function renderOrderScreen() {
-  const resolvedId = currentOrder.order_id || currentOrder.id || orderId;
-  const detailText = currentOrder.detail || currentOrder.building_unit || "101동 1203호";
+  const resolvedId = currentOrder.order_id || orderId;
+  const detailText = currentOrder.detail || "101동 1203호";
 
   if (currentOrder.status === "delivered") {
     renderDoneView(resolvedId, detailText);
@@ -80,9 +79,9 @@ function renderOrderScreen() {
   // Meta line: "주문번호 {order_id}." (skip created_at time)
   metaLine.textContent = `주문번호 ${resolvedId}.`;
 
-  // Dark block "도착지" (at most 2 info lines + chip, Korean fixed phrases only)
+  // Dark block "도착지"
   const entryMethod = currentOrder.entry_method;
-  const entryCode = currentOrder.entry_code || currentOrder.door_code || "";
+  const entryCode = currentOrder.entry_code || "";
   const koPhrase = ENTRY_PHRASES_KO[entryMethod] || "";
 
   let entryHtml = "";
@@ -111,7 +110,7 @@ function renderOrderScreen() {
 
   // "요청사항" section — strictly using textContent, not innerHTML, for user note
   requestsBox.innerHTML = "";
-  const rawNote = currentOrder.rider_note ?? currentOrder.note ?? "";
+  const rawNote = currentOrder.rider_note ?? "";
 
   const subLabel = document.createElement("div");
   subLabel.className = "requests-sublabel";
@@ -187,26 +186,17 @@ function renderNotFound() {
   mainContent.appendChild(container);
 }
 
-// 5. Mark Order Delivered on Button Click
+// 5. Mark Order Delivered on Button Click (Matches Flask route: POST /deliver)
 actionBtn.addEventListener("click", async () => {
   errorAlertBox.classList.remove("visible");
   actionBtn.disabled = true;
 
-  const encodedId = encodeURIComponent(orderId);
-
   try {
-    let res = await fetch(`/orders/${encodedId}/deliver`, {
+    const res = await fetch("/deliver", {
       method: "POST",
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: orderId })
     });
-
-    if (res.status === 404 || res.status === 405) {
-      res = await fetch(`/orders/${encodedId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: "delivered" })
-      });
-    }
 
     if (!res.ok) {
       throw new Error("Server failed to mark order as delivered");
