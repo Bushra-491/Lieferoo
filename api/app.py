@@ -4,6 +4,7 @@ import secrets
 from datetime import datetime, timezone
 import psycopg
 from flask import Flask, request, jsonify
+from psycopg.rows import dict_row
 
 app = Flask(__name__)
 
@@ -124,6 +125,70 @@ def create_order():
             )
 
     return jsonify({"order_id": order_id}), 201
+@app.route('/addresses', methods=['GET'])
+def get_addresses():
+    query = request.args.get('q', '').strip()
+    with get_conn() as conn:
+        with conn.cursor(row_factory=dict_row) as cur:
+            if query:
+                pattern = f"%{query}%"
+                cur.execute(
+                    """
+                    SELECT address_id, building_type, building_name_ko, building_name_en,
+                           sub_buildings, road_address_ko, road_address_en,
+                           jibun_address_ko, jibun_address_en, district_ko, district_en,
+                           legal_dong_ko, legal_dong_en, zip_code, lat, lng
+                    FROM addresses
+                    WHERE road_address_ko ILIKE %s
+                       OR road_address_en ILIKE %s
+                       OR jibun_address_ko ILIKE %s
+                       OR jibun_address_en ILIKE %s
+                       OR building_name_ko ILIKE %s
+                       OR building_name_en ILIKE %s
+                    ORDER BY address_id
+                    """,
+                    (pattern, pattern, pattern, pattern, pattern, pattern)
+                )
+            else:
+                cur.execute(
+                    """
+                    SELECT address_id, building_type, building_name_ko, building_name_en,
+                           sub_buildings, road_address_ko, road_address_en,
+                           jibun_address_ko, jibun_address_en, district_ko, district_en,
+                           legal_dong_ko, legal_dong_en, zip_code, lat, lng
+                    FROM addresses
+                    ORDER BY address_id
+                    """
+                )
+            rows = cur.fetchall()
+    return jsonify({"addresses": rows, "count": len(rows)}), 200
+
+@app.route('/order', methods=['GET'])
+def get_order():
+    order_id = request.args.get('id', '').strip()
+    if not order_id:
+        return jsonify({"error": "Order ID is required."}), 400
+
+    with get_conn() as conn:
+        with conn.cursor(row_factory=dict_row) as cur:
+            cur.execute(
+                """
+                SELECT o.order_id, o.address_id, o.detail, o.entry_method, o.entry_code,
+                       o.rider_note, o.status, o.created_at,
+                       a.road_address_ko, a.road_address_en, a.building_name_ko, a.building_name_en
+                FROM orders o
+                JOIN addresses a ON o.address_id = a.address_id
+                WHERE o.order_id = %s
+                """,
+                (order_id,)
+            )
+            row = cur.fetchone()
+
+    if not row:
+        return jsonify({"error": "Order not found."}), 404
+
+    row["created_at"] = row["created_at"].isoformat()
+    return jsonify({"order": row}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
