@@ -1,6 +1,7 @@
 import os
+import re
 import psycopg
-from flask import Flask
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -14,11 +15,6 @@ def db_check():
     with psycopg.connect(database_url) as conn:
         res = conn.execute("SELECT 1").fetchone()
     return str(res[0])
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-import re
 
 def validate_order(data):
     # 1. Detail: trim first, then check empty, length, and allowed characters
@@ -62,3 +58,6 @@ def validate_order(data):
         "entry_code": entry_code,
         "rider_note": rider_note
     }
+
+if __name__ == '__main__':
+    app.run(debug=True)
