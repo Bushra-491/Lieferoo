@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="./tokens.css" />
   <link rel="stylesheet" href="./user.css" />
   <style>
-    /* Additional checkout-specific styles */
     .checkout-content {
       padding: var(--space-4);
       display: flex;
@@ -103,7 +102,7 @@
           <a href="./user.html" id="changeAddressLink" class="change-link">Change</a>
         </div>
 
-        <!-- Warning banner if address details/building/unit are missing -->
+        <!-- Warning banner if missing data -->
         <div id="warningBanner" class="warning-banner" role="alert">
           <span>⚠️ Add your building, unit and how the rider gets in — so your order isn't late.</span>
         </div>
@@ -155,13 +154,30 @@
   </div>
 
   <script>
-    const warningBanner = document.getElementById("warningBanner");
+    const checkoutAddressTitle = document.getElementById("checkoutAddressTitle");
+    const checkoutAddressSub = document.getElementById("checkoutAddressSub");
     const checkoutAddressUnit = document.getElementById("checkoutAddressUnit");
-    const changeAddressLink = document.getElementById("changeAddressLink");
     const placeOrderBtn = document.getElementById("placeOrderBtn");
     const dropoffPills = document.querySelectorAll(".dropoff-pill");
 
-    // Drop-off pill toggle selector
+    // Load saved address data from localStorage if available
+    const savedDataStr = localStorage.getItem("lieferoo_checkout_address");
+    if (savedDataStr) {
+      try {
+        const saved = JSON.parse(savedDataStr);
+        if (saved.title) checkoutAddressTitle.textContent = saved.title;
+        if (saved.sub) checkoutAddressSub.textContent = saved.sub;
+        
+        if (saved.buildingUnit) {
+          const methodText = saved.entryMethod === "door_code" ? `Door code ${saved.doorCode}` : saved.entryMethod;
+          checkoutAddressUnit.innerHTML = `🔑 ${saved.buildingUnit} · ${methodText}`;
+          checkoutAddressUnit.style.display = "block";
+        }
+      } catch (e) {
+        console.error("Error parsing saved address", e);
+      }
+    }
+
     dropoffPills.forEach(pill => {
       pill.addEventListener("click", () => {
         dropoffPills.forEach(p => p.classList.remove("selected"));
@@ -169,10 +185,11 @@
       });
     });
 
-    // Handle place order action -> Creates order in backend and opens Rider view
     placeOrderBtn.addEventListener("click", async () => {
       placeOrderBtn.disabled = true;
       placeOrderBtn.textContent = "Placing order...";
+
+      const savedData = JSON.parse(localStorage.getItem("lieferoo_checkout_address") || "{}");
 
       try {
         const res = await fetch("/orders", {
@@ -180,10 +197,10 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             address_id: "ADR-001",
-            detail: "101동 1203호",
-            entry_method: "door_code",
-            entry_code: "4826#",
-            rider_note: "문 앞에 두고 벨은 누르지 말아주세요"
+            detail: savedData.buildingUnit || "101동 1203호",
+            entry_method: savedData.entryMethod || "door_code",
+            entry_code: savedData.doorCode || "4826#",
+            rider_note: savedData.riderNote || ""
           })
         });
 
@@ -192,7 +209,6 @@
           throw new Error(data.error || "Failed to place order.");
         }
 
-        // Seamlessly redirects to the Rider Screen with the generated order ID
         window.location.href = `./rider.html?id=${encodeURIComponent(data.order_id)}`;
       } catch (err) {
         alert(err.message);
