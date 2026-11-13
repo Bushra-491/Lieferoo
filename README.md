@@ -13,7 +13,15 @@ A mobile web app for Lieferoo, a fictional food delivery app in Korea, so that a
 
 ## Screenshots
 
+| Address Details (1) | Address Details (2) | Address Details (3) |
+| :---: | :---: | :---: |
+| ![User Screen 1](User%20Screen%201.jpeg) | ![User Screen 2](User%20Screen%202.jpeg) | ![User Screen 3](User%20Screen3.jpeg) |
+| *Selecting Address & Unit* | *Configuring Rider Entry* | *Rider Preview Card* |
 
+| Checkout Screen | Rider Delivery Screen | Order Completed Screen |
+| :---: | :---: | :---: |
+| ![Checkout](Checkout.jpeg) | ![Rider Screen](Rider%20Screen.jpeg) | ![Order Delivered](Order%20Delieverd.jpeg) |
+| *Checkout Summary & Drop-off* | *Active Delivery View* | *Delivery Completed State* |
 
 ## How to run
 
