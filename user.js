@@ -44,7 +44,7 @@ let addressesList = [];
 let selectedAddress = null;
 let hasSubmittedOnce = false;
 
-// Regex Rules (Mirroring server validation)
+// Regex Rules
 const BUILDING_REGEX = /^[a-zA-Z0-9\uAC00-\uD7A3\u1100-\u11FF\u3130-\u318F\s]+$/;
 const DOOR_CODE_REGEX = /^[0-9#*]+$/;
 
@@ -274,7 +274,7 @@ riderNote.addEventListener("input", () => {
   renderPreview();
 });
 
-saveBtn.addEventListener("click", async () => {
+saveBtn.addEventListener("click", () => {
   hasSubmittedOnce = true;
   const errors = validateForm();
   renderErrors(errors);
@@ -284,41 +284,20 @@ saveBtn.addEventListener("click", async () => {
     return;
   }
 
-  saveBtn.disabled = true;
-  saveBtn.textContent = "Saving...";
-
-  const payload = {
-    address_id: selectedAddress ? selectedAddress.address_id : "ADR-001",
-    detail: buildingUnit.value.trim(),
-    entry_method: getSelectedEntryMethod(),
-    entry_code: doorCodeInput.value.trim(),
-    rider_note: riderNote.value.trim()
+  // Save data to localStorage so index.html can pick it up immediately
+  const savedData = {
+    title: selectedAddress ? (selectedAddress.building_name_en || selectedAddress.road_address_en) : "Hanbit Village Complex 2 Apt.",
+    sub: selectedAddress ? selectedAddress.road_address_en : "10, Donggyo-ro 51-gil, Mapo-gu, Seoul",
+    buildingUnit: buildingUnit.value.trim(),
+    entryMethod: getSelectedEntryMethod(),
+    doorCode: doorCodeInput.value.trim(),
+    riderNote: riderNote.value.trim()
   };
 
-  try {
-    const res = await fetch("/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
+  localStorage.setItem("lieferoo_checkout_address", JSON.stringify(savedData));
 
-    const data = await res.json();
-    if (!res.ok) {
-      throw new Error(data.error || "Failed to save address.");
-    }
-
-    successBox.innerHTML = `
-      <div><strong>Success!</strong> Order created.</div>
-      <a href="./rider.html?id=${encodeURIComponent(data.order_id)}" class="success-link">Open Rider Screen (${data.order_id})</a>
-    `;
-    successBox.classList.add("visible");
-    saveBtn.textContent = "Saved";
-  } catch (err) {
-    serverBanner.textContent = err.message;
-    serverBanner.classList.add("visible");
-    saveBtn.disabled = false;
-    saveBtn.textContent = "Save address";
-  }
+  // Redirect back to checkout screen (index.html)
+  window.location.href = "./index.html";
 });
 
 // Initialize
