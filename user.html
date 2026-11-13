@@ -50,10 +50,10 @@
         <div class="form-group">
             <label>Entry Method</label>
             <div class="radio-group" id="entry-methods">
-                <label class="radio-option"><input type="radio" name="entry_method" value="Door code" checked> Door code</label>
-                <label class="radio-option"><input type="radio" name="entry_method" value="Call the unit at the entrance"> Call the unit at the entrance</label>
-                <label class="radio-option"><input type="radio" name="entry_method" value="Ask at the security desk"> Ask at the security desk</label>
-                <label class="radio-option"><input type="radio" name="entry_method" value="No code needed"> No code needed</label>
+                <label class="radio-option"><input type="radio" name="entry_method" value="door_code" checked> Door code</label>
+                <label class="radio-option"><input type="radio" name="entry_method" value="intercom"> Call the unit at the entrance</label>
+                <label class="radio-option"><input type="radio" name="entry_method" value="security"> Ask at the security desk</label>
+                <label class="radio-option"><input type="radio" name="entry_method" value="none"> No code needed</label>
             </div>
         </div>
 
@@ -105,7 +105,7 @@
     
     radios.forEach(radio => {
         radio.addEventListener('change', (e) => {
-            if (e.target.value === 'Door code') {
+            if (e.target.value === 'door_code') {
                 doorCodeGroup.style.display = 'block';
             } else {
                 doorCodeGroup.style.display = 'none';
