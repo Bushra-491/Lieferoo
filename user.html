@@ -123,6 +123,13 @@
     });
 
     // Error & Success Handlers
+    function clearMessages() {
+        const errDiv = document.getElementById('error-msg');
+        errDiv.textContent = '';
+        errDiv.style.display = 'none';
+        document.getElementById('success-msg').style.display = 'none';
+    }
+
     function showError(msg) {
         const errDiv = document.getElementById('error-msg');
         errDiv.textContent = msg;
@@ -136,17 +143,21 @@
         succDiv.style.display = 'block';
         document.getElementById('error-msg').style.display = 'none';
         document.getElementById('order-form').reset();
+        doorCodeGroup.style.display = 'block';
         charCounter.textContent = '0/200';
     }
 
     // 4. Form Submission
     document.getElementById('order-form').addEventListener('submit', async (e) => {
         e.preventDefault();
+        clearMessages();
         
+        const selectedRadio = document.querySelector('input[name="entry_method"]:checked');
+
         const payload = {
             address_id: document.getElementById('address_id').value,
             detail: document.getElementById('detail').value,
-            entry_method: document.querySelector('input[name="entry_method"]:checked').value,
+            entry_method: selectedRadio ? selectedRadio.value : '',
             entry_code: document.getElementById('entry_code').value,
             rider_note: riderNote.value
         };
