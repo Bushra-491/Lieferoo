@@ -25,7 +25,6 @@ def validate_order(data):
     if not isinstance(data, dict):
         return False, "Invalid request."
 
-    # 1. Detail
     raw_detail = data.get('detail', '')
     if not isinstance(raw_detail, str):
         return False, "Use English letters, Korean, numbers or spaces only."
@@ -38,7 +37,6 @@ def validate_order(data):
     if not re.fullmatch(r'[A-Za-z0-9가-힣 ]+', detail):
         return False, "Use English letters, Korean, numbers or spaces only."
 
-    # 2. Entry Method
     raw_method = data.get('entry_method', '')
     if not isinstance(raw_method, str):
         return False, "Choose how the rider gets in."
@@ -48,7 +46,6 @@ def validate_order(data):
     if entry_method not in valid_methods:
         return False, "Choose how the rider gets in."
 
-    # 3. Entry Code
     raw_code = data.get('entry_code', '')
     if not isinstance(raw_code, str):
         raw_code = str(raw_code) if raw_code is not None else ''
@@ -64,7 +61,6 @@ def validate_order(data):
     else:
         entry_code = ""
 
-    # 4. Rider Note
     rider_note = data.get('rider_note', '')
     if rider_note is None:
         rider_note = ''
@@ -83,28 +79,21 @@ def validate_order(data):
 @app.route('/orders', methods=['POST'])
 def create_order():
     data = request.get_json(silent=True)
-
-    # 1. Validate order fields first
     ok, result = validate_order(data)
     if not ok:
         return jsonify({"error": result}), 400
 
-    # 2. Check address_id presence and format
     raw_address_id = data.get('address_id', '')
     if not isinstance(raw_address_id, str) or not raw_address_id.strip():
         return jsonify({"error": "Select a valid delivery address."}), 400
     address_id = raw_address_id.strip()
 
-    # 3. Verify address_id exists in Neon and insert order
     date_prefix = datetime.now(timezone.utc).strftime("%Y%m%d")
     order_id = f"ORD-{date_prefix}-{secrets.token_hex(3).upper()}"
 
     with get_conn() as conn:
         with conn.cursor() as cur:
-            cur.execute(
-                "SELECT 1 FROM addresses WHERE address_id = %s",
-                (address_id,)
-            )
+            cur.execute("SELECT 1 FROM addresses WHERE address_id = %s", (address_id,))
             if cur.fetchone() is None:
                 return jsonify({"error": "Selected address does not exist."}), 400
 
@@ -125,6 +114,7 @@ def create_order():
             )
 
     return jsonify({"order_id": order_id}), 201
+
 @app.route('/addresses', methods=['GET'])
 def get_addresses():
     query = request.args.get('q', '').strip()
