@@ -18,7 +18,7 @@
   color: var(--text);
 }
 
-/* Status Pill ("배달 중" dark or "배달 완료" green) */
+/* Status Pill */
 .status-pill {
   font-size: 12px;
   font-weight: 600;
@@ -36,24 +36,23 @@
   color: var(--text-on-primary);
 }
 
-/* Main Content Area (Fits inside 375x812 without scrolling) */
+/* Main Content Area */
 .rider-content {
   padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex: 1;
-  padding-bottom: 88px;
+  padding-bottom: 110px;
 }
 
-/* Meta Line: "주문번호 {order_id}." */
 .meta-line {
   font-size: 13px;
   color: var(--text-sub);
   font-weight: 500;
 }
 
-/* Dark Destination Block ("도착지") */
+/* Dark Destination Block */
 .rider-dark-card {
   background-color: var(--rider-block);
   color: var(--text-on-primary);
@@ -70,7 +69,6 @@
   font-weight: 600;
 }
 
-/* Detail big and bold: 28px/36px */
 .rider-detail-big {
   font-size: 28px;
   line-height: 36px;
@@ -78,7 +76,6 @@
   color: var(--text-on-primary);
 }
 
-/* Orange Chip with Korean Phrase */
 .rider-orange-chip {
   align-self: flex-start;
   background-color: var(--primary);
@@ -89,7 +86,6 @@
   border-radius: var(--radius-pill);
 }
 
-/* Door Code: 32px/40px bold */
 .rider-code-huge {
   font-size: 32px;
   line-height: 40px;
@@ -98,14 +94,28 @@
   letter-spacing: 1px;
 }
 
-/* Small Korean Address Line */
 .rider-ko-address {
   font-size: 13px;
   color: var(--text-disabled);
   margin-top: var(--space-1);
 }
 
-/* Requests Section ("요청사항") — Quieter than the dark block */
+/* Map Route Card */
+.rider-map-card {
+  width: 100%;
+  height: 110px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.rider-map-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Requests Section */
 .requests-section {
   display: flex;
   flex-direction: column;
@@ -144,6 +154,16 @@
 
 .requests-body.empty {
   color: var(--text-sub);
+}
+
+/* Order Summary Meta Line Above Buttons */
+.order-summary-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-sub);
+  padding: 0 var(--space-1);
+  margin-top: var(--space-2);
 }
 
 /* Failure Red Box */
@@ -208,29 +228,45 @@
   color: var(--text-sub);
 }
 
-/* Missing / Unknown Order View */
-.not-found-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex: 1;
-  padding: var(--space-6);
-}
-
-.not-found-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-sub);
-}
-
-/* Sticky Bottom Action Bar */
+/* Sticky Bottom Action Bar with Dual Buttons */
 .bottom-bar {
   position: fixed;
   bottom: 0;
   width: var(--frame-width);
-  padding: var(--space-3) 0;
+  padding: var(--space-3) var(--space-4);
   background-color: var(--surface);
   border-top: 1px solid var(--divider);
+}
+
+.bottom-buttons-row {
+  display: flex;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.btn-secondary {
+  height: var(--height-btn-lg);
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--band);
+}
+
+.bottom-bar .btn-big {
+  flex: 2;
+  margin: 0;
+  width: auto;
 }
