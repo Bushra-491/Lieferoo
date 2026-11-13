@@ -1,0 +1,293 @@
+/* Top Bar */
+.top-bar {
+  justify-content: flex-start;
+  gap: var(--space-3);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--text);
+  cursor: pointer;
+  padding: var(--space-1);
+  display: flex;
+  align-items: center;
+}
+
+.top-bar-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Server Top Banner (for unexpected server errors) */
+.server-banner {
+  background-color: #FDECEA;
+  color: var(--error);
+  border-bottom: 1px solid var(--error);
+  padding: var(--space-3) var(--space-4);
+  font-size: 13px;
+  font-weight: 500;
+  display: none;
+}
+
+.server-banner.visible {
+  display: block;
+}
+
+/* Main Scrollable Content */
+.content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-bottom: 96px; /* Space for sticky bottom button */
+}
+
+.section-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.section-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.helper-text {
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.4;
+}
+
+/* Address Picker */
+.picker-select {
+  height: var(--height-input);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--surface);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* Address Card */
+.address-card {
+  background-color: var(--band);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.address-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.address-sub {
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
+/* Error Text & Input Error State */
+.error-text {
+  font-size: 12px;
+  color: var(--error);
+  font-weight: 500;
+  display: none;
+}
+
+.error-text.visible {
+  display: block;
+}
+
+.input-field.has-error {
+  border-color: var(--error);
+}
+
+/* Radio Cards (4 options) */
+.radio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--surface);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.radio-card input[type="radio"] {
+  margin-top: 3px;
+  accent-color: var(--primary);
+}
+
+.radio-card.selected {
+  border-color: var(--primary);
+  background-color: var(--primary-subtle);
+}
+
+.radio-card.has-error {
+  border-color: var(--error);
+}
+
+.radio-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.radio-card-desc {
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-top: 2px;
+}
+
+/* Conditional Door Code Box */
+.door-code-box {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  background-color: var(--band);
+  border-radius: var(--radius-md);
+}
+
+.door-code-box.visible {
+  display: flex;
+}
+
+/* Note Textarea + Counter */
+.textarea-field {
+  width: 100%;
+  min-height: 80px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+}
+
+.textarea-field:focus {
+  border-color: var(--primary);
+}
+
+.char-counter {
+  font-size: 12px;
+  color: var(--text-sub);
+  text-align: right;
+}
+
+/* Rider Preview Box */
+.preview-empty-or-error {
+  padding: var(--space-4);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--band);
+  color: var(--text-sub);
+  font-size: 13px;
+  text-align: center;
+}
+
+.preview-empty-or-error.is-error {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.rider-dark-card {
+  background-color: var(--rider-block);
+  color: var(--text-on-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.rider-tag-small {
+  font-size: 11px;
+  color: var(--text-disabled);
+  font-weight: 600;
+}
+
+.rider-detail-big {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-on-primary);
+}
+
+.rider-orange-chip {
+  align-self: flex-start;
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+.rider-ko-address {
+  font-size: 12px;
+  color: var(--text-disabled);
+  margin-top: var(--space-1);
+}
+
+.preview-caption {
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.4;
+}
+
+/* Success Banner */
+.success-box {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: #E8F5E9;
+  border: 1px solid var(--success);
+  color: var(--success);
+  font-size: 14px;
+}
+
+.success-box.visible {
+  display: flex;
+}
+
+.success-link {
+  color: var(--success);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Sticky Bottom Footer */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  width: var(--frame-width);
+  padding: var(--space-3) 0;
+  background-color: var(--surface);
+  border-top: 1px solid var(--divider);
+}
