@@ -136,7 +136,7 @@ function validateForm() {
 }
 
 function renderErrors(errors) {
-  buildingError.textContent = errors.building;
+  buildingError.textContent = errors.building || "";
   buildingError.classList.toggle("visible", Boolean(errors.building));
   buildingUnit.classList.toggle("has-error", Boolean(errors.building));
 
