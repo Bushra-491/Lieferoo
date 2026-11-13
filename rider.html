@@ -67,26 +67,29 @@
                 return;
             }
 
-            // Populate Order Info
-            document.getElementById('road-address').textContent = data.road_address_ko || data.road_address_en;
+            // Unwrap nested "order" object if the backend wraps it
+            const order = data.order || data;
+
+            // Populate Order Info (Line 1: road_address_ko)
+            document.getElementById('road-address').textContent = order.road_address_ko || order.road_address_en || '';
             
             // Format Line 2: {detail} · {Korean phrase} {entry_code}
-            const phrase = entryMethodPhrases[data.entry_method] || data.entry_method;
-            let line2 = `${data.detail} · ${phrase}`;
-            if (data.entry_code && data.entry_code.trim() !== '') {
-                line2 += ` ${data.entry_code}`;
+            const phrase = entryMethodPhrases[order.entry_method] || order.entry_method || '';
+            let line2 = `${order.detail || ''} · ${phrase}`;
+            if (order.entry_code && order.entry_code.trim() !== '') {
+                line2 += ` ${order.entry_code}`;
             }
             document.getElementById('order-details').textContent = line2;
 
             // Handle Rider Note
             const noteBox = document.getElementById('rider-note');
-            if (data.rider_note && data.rider_note.trim() !== '') {
-                noteBox.textContent = `Note: ${data.rider_note}`;
+            if (order.rider_note && order.rider_note.trim() !== '') {
+                noteBox.textContent = `Note: ${order.rider_note}`;
                 noteBox.style.display = 'block';
             }
 
             // Check if already delivered
-            if (data.status === 'delivered') {
+            if (order.status === 'delivered') {
                 const btn = document.getElementById('deliver-btn');
                 btn.textContent = "Already Delivered";
                 btn.disabled = true;
