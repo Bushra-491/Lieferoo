@@ -17,24 +17,49 @@
 
     <!-- Main Content -->
     <main id="mainContent" class="rider-content">
-      <div id="metaLine" class="meta-line"></div>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div id="metaLine" class="meta-line"></div>
+        <div style="font-size: 12px; color: var(--text-sub); font-weight: 500;">픽업 20:41</div>
+      </div>
 
-      <!-- Error Box (replaces alert()) -->
+      <!-- Error Box -->
       <div id="errorAlertBox" class="error-alert-box" role="alert"></div>
 
       <!-- Dark Destination Block ("도착지") -->
       <section id="destinationBlock" class="rider-dark-card" aria-label="도착지"></section>
+
+      <!-- Map / Route Card Preview -->
+      <section class="rider-map-card" aria-label="지도 경로">
+        <svg class="rider-map-svg" viewBox="0 0 343 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="343" height="110" fill="#EFEFEF"/>
+          <path d="M0 35H343" stroke="#FFFFFF" stroke-width="8"/>
+          <path d="M110 0V110" stroke="#FFFFFF" stroke-width="8"/>
+          <path d="M240 0V110" stroke="#FFFFFF" stroke-width="8"/>
+          <path d="M40 70H300" stroke="#C8410B" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="40" cy="70" r="5" fill="#1A1A1A"/>
+          <circle cx="300" cy="70" r="5" fill="#C8410B"/>
+        </svg>
+      </section>
 
       <!-- Requests Section ("요청사항") -->
       <section id="requestsSection" class="requests-section" aria-label="요청사항">
         <div class="requests-heading">요청사항</div>
         <div id="requestsBox" class="requests-card"></div>
       </section>
+
+      <!-- Order Summary Meta Line -->
+      <div class="order-summary-meta">
+        <span>메뉴 2개 · 23,500원</span>
+        <span>선결제 완료</span>
+      </div>
     </main>
 
-    <!-- Bottom Action Bar -->
+    <!-- Bottom Action Bar with Dual Buttons -->
     <div id="bottomBar" class="bottom-bar">
-      <button type="button" id="actionBtn" class="btn-big">배달 완료</button>
+      <div class="bottom-buttons-row">
+        <button type="button" id="navBtn" class="btn-secondary">길 안내</button>
+        <button type="button" id="actionBtn" class="btn-big">배달 완료</button>
+      </div>
     </div>
   </div>
 
