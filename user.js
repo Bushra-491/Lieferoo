@@ -29,6 +29,8 @@ const doorCodeBox = document.getElementById("doorCodeBox");
 const doorCodeInput = document.getElementById("doorCodeInput");
 const doorCodeError = document.getElementById("doorCodeError");
 
+const useNextTime = document.getElementById("useNextTime");
+
 const riderNote = document.getElementById("riderNote");
 const charCounter = document.getElementById("charCounter");
 
@@ -99,7 +101,8 @@ function updateButtonState() {
     buildingUnit.value.trim().length > 0 ||
     getSelectedEntryMethod() !== "" ||
     doorCodeInput.value.trim().length > 0 ||
-    riderNote.value.trim().length > 0;
+    riderNote.value.trim().length > 0 ||
+    (useNextTime && useNextTime.checked);
 
   saveBtn.disabled = !hasAnyInput;
 }
@@ -276,6 +279,12 @@ doorCodeInput.addEventListener("input", () => {
   if (hasSubmittedOnce) renderErrors(validateForm());
   renderPreview();
 });
+
+if (useNextTime) {
+  useNextTime.addEventListener("change", () => {
+    updateButtonState();
+  });
+}
 
 riderNote.addEventListener("input", () => {
   charCounter.textContent = `${riderNote.value.length}/200`;
