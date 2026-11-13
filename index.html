@@ -1,147 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lieferoo - Dashboard Preview</title>
-    <link rel="stylesheet" href="./tokens.css" />
-    <link rel="icon" href="data:,">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f6f8;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .card {
-            background: #ffffff;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            box-sizing: border-box; 
-            width: 100%;            
-            max-width: 380px;       
-            text-align: center;
-        }
-        h1 {
-            color: #ff5722;
-            margin-bottom: 0.2rem;
-            font-size: 1.8rem;
-        }
-        p.subtitle {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 1.5rem;
-        }
-        .stat-box {
-            background: #fff8f6;
-            border: 1px solid #ffdcd0;
-            padding: 1rem;
-            border-radius: 8px;
-            width: 42%;
-        }
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #d32f2f;
-        }
-        .stat-label {
-            font-size: 0.85rem;
-            color: #555;
-            margin-top: 0.3rem;
-        }
-        .meta-info {
-            font-size: 0.8rem;
-            color: #777;
-            background: #f9f9f9;
-            padding: 0.8rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            text-align: left;
-        }
-        .status {
-            font-size: 0.85rem;
-            color: #2e7d32;
-            background: #e8f5e9;
-            padding: 0.5rem;
-            border-radius: 6px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lieferoo — Checkout</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./user.css" />
+  <style>
+    /* Additional checkout-specific styles */
+    .checkout-content {
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      padding-bottom: 96px;
+    }
+    .address-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .change-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .change-link:hover {
+      text-decoration: underline;
+    }
+    .dropoff-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+    .dropoff-pill {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      background-color: var(--surface);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .dropoff-pill.selected {
+      border-color: var(--primary);
+      background-color: var(--primary-subtle);
+      color: var(--primary);
+    }
+    .warning-banner {
+      display: none;
+      background-color: #FDECEA;
+      color: var(--error);
+      border: 1px solid var(--error);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: var(--space-3);
+    }
+    .warning-banner.visible {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .financial-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: var(--space-2);
+    }
+    .financial-line.total {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      border-top: 1px solid var(--divider);
+      padding-top: var(--space-3);
+      margin-top: var(--space-2);
+    }
+  </style>
 </head>
 <body>
+  <div class="app-frame">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <button type="button" class="back-btn" onclick="history.back()" aria-label="Go back">&#8592;</button>
+      <h1 class="top-bar-title">Checkout</h1>
+    </header>
 
-    <div class="card">
-        <h1>Lieferoo</h1>
-        <p class="subtitle">Dataset Connectivity Dashboard</p>
+    <!-- Main Content -->
+    <main class="checkout-content">
+      
+      <!-- Deliver To Section -->
+      <div class="section-group">
+        <div class="address-header-row">
+          <span class="section-label" style="font-size: 13px; color: var(--text-sub); font-weight: 500;">Deliver to</span>
+          <a href="./user.html" id="changeAddressLink" class="change-link">Change</a>
+        </div>
+
+        <!-- Warning banner if address details/building/unit are missing -->
+        <div id="warningBanner" class="warning-banner" role="alert">
+          <span>⚠️ Add your building, unit and how the rider gets in — so your order isn't late.</span>
+        </div>
+
+        <div class="address-card">
+          <div id="checkoutAddressTitle" class="address-title">Hanbit Village Complex 2 Apt.</div>
+          <div id="checkoutAddressSub" class="address-sub">10, Donggyo-ro 51-gil, Mapo-gu, Seoul</div>
+          <div id="checkoutAddressUnit" style="font-size: 13px; font-weight: 600; color: var(--text); margin-top: 4px;">
+            🔑 101동 1203호 · Door code
+          </div>
+        </div>
+      </div>
+
+      <!-- Drop-off Section -->
+      <div class="section-group">
+        <div class="section-label">Drop-off</div>
+        <p class="helper-text">How to get in is saved with your address. Here you only pick the hand-off.</p>
         
-        <div class="stats-container">
-            <div class="stat-box">
-                <div id="address-count" class="stat-number">...</div>
-                <div class="stat-label">Addresses</div>
-            </div>
-            <div class="stat-box">
-                <div id="order-count" class="stat-number">...</div>
-                <div class="stat-label">Orders</div>
-            </div>
+        <div class="dropoff-grid" role="radiogroup">
+          <button type="button" class="dropoff-pill selected" data-value="leave_door">Leave at door, don’t ring</button>
+          <button type="button" class="dropoff-pill" data-value="leave_ring">Leave at door, ring bell</button>
+          <button type="button" class="dropoff-pill" data-value="hand_it">Hand it to me</button>
         </div>
+      </div>
 
-        <div class="meta-info" id="meta-details">
-            Loading metadata version...
+      <hr style="border: none; border-top: 1px solid var(--divider);" />
+
+      <!-- Order Summary / Financials -->
+      <div class="section-group">
+        <div class="financial-line">
+          <span>Order amount</span>
+          <span>₩20,500</span>
         </div>
+        <div class="financial-line">
+          <span>Delivery fee</span>
+          <span>₩3,000</span>
+        </div>
+        <div class="financial-line total">
+          <span>Total</span>
+          <span>₩23,500</span>
+        </div>
+      </div>
+    </main>
 
-        <div id="status-message" class="status">Connecting to JSON files...</div>
+    <!-- Sticky Bottom Action Bar -->
+    <div class="bottom-bar">
+      <button type="button" id="placeOrderBtn" class="btn-big">Place order · ₩23,500</button>
     </div>
+  </div>
 
-    <script>
-        async function loadData() {
-            try {
-                // Fetching both JSON files concurrently from the data/ folder
-                const [addressRes, orderRes] = await Promise.all([
-                    fetch('./data/B1_sample_addresses.json'),
-                    fetch('./data/B2_sample_orders.json')
-                ]);
+  <script>
+    // Simple interactivity logic for Checkout toggle states (Default vs Empty states)
+    const warningBanner = document.getElementById("warningBanner");
+    const checkoutAddressUnit = document.getElementById("checkoutAddressUnit");
+    const changeAddressLink = document.getElementById("changeAddressLink");
+    const placeOrderBtn = document.getElementById("placeOrderBtn");
+    const dropoffPills = document.querySelectorAll(".dropoff-pill");
 
-                if (!addressRes.ok || !orderRes.ok) {
-                    throw new Error("Failed to load one or more JSON files.");
-                }
+    // Drop-off pill toggle selector
+    dropoffPills.forEach(pill => {
+      pill.addEventListener("click", () => {
+        dropoffPills.forEach(p => p.classList.remove("selected"));
+        pill.classList.add("selected");
+      });
+    });
 
-                const addressData = await addressRes.json();
-                const orderData = await orderRes.json();
-
-                // Extracting counts correctly based on your JSON structure (nested under arrays)
-                const addressesCount = addressData.addresses ? addressData.addresses.length : 0;
-                const ordersCount = orderData.orders ? orderData.orders.length : 0;
-
-                // Update UI with real counts
-                document.getElementById('address-count').innerText = addressesCount;
-                document.getElementById('order-count').innerText = ordersCount;
-
-                // Display version info from metadata
-                document.getElementById('meta-details').innerHTML = `
-                    <b>Data Spec:</b> ${addressData.meta.spec}<br>
-                    <b>Version:</b> Addresses v${addressData.meta.version} | Orders v${orderData.meta.version}<br>
-                    <b>Snapshot:</b> ${orderData.meta.snapshot_at ? orderData.meta.snapshot_at.replace('T', ' ') : 'N/A'}
-                `;
-
-                document.getElementById('status-message').innerText = "Successfully connected to sample data!";
-            } catch (error) {
-                console.error(error);
-                document.getElementById('status-message').style.background = "#ffebee";
-                document.getElementById('status-message').style.color = "#c62828";
-                document.getElementById('status-message').innerText = "Error loading data. Check file paths.";
-            }
-        }
-
-        loadData();
-    </script>
+    // Handle place order action
+    placeOrderBtn.addEventListener("click", () => {
+      alert("Order placed successfully!");
+    });
+  </script>
 </body>
 </html>
