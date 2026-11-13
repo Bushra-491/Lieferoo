@@ -155,7 +155,6 @@
   </div>
 
   <script>
-    // Simple interactivity logic for Checkout toggle states (Default vs Empty states)
     const warningBanner = document.getElementById("warningBanner");
     const checkoutAddressUnit = document.getElementById("checkoutAddressUnit");
     const changeAddressLink = document.getElementById("changeAddressLink");
@@ -170,9 +169,36 @@
       });
     });
 
-    // Handle place order action
-    placeOrderBtn.addEventListener("click", () => {
-      alert("Order placed successfully!");
+    // Handle place order action -> Creates order in backend and opens Rider view
+    placeOrderBtn.addEventListener("click", async () => {
+      placeOrderBtn.disabled = true;
+      placeOrderBtn.textContent = "Placing order...";
+
+      try {
+        const res = await fetch("/orders", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            address_id: "ADR-001",
+            detail: "101동 1203호",
+            entry_method: "door_code",
+            entry_code: "4826#",
+            rider_note: "문 앞에 두고 벨은 누르지 말아주세요"
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || "Failed to place order.");
+        }
+
+        // Seamlessly redirects to the Rider Screen with the generated order ID
+        window.location.href = `./rider.html?id=${encodeURIComponent(data.order_id)}`;
+      } catch (err) {
+        alert(err.message);
+        placeOrderBtn.disabled = false;
+        placeOrderBtn.textContent = "Place order · ₩23,500";
+      }
     });
   </script>
 </body>
