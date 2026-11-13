@@ -17,9 +17,16 @@ def db_check():
     return str(res[0])
 
 def validate_order(data):
-    # 1. Detail: trim first, then check empty, length, and allowed characters
-    raw_detail = data.get('detail', '') or ''
-    detail = str(raw_detail).strip()
+    # Check if data is a dictionary (handles empty, list, null/None inputs)
+    if not isinstance(data, dict):
+        return False, "Invalid request."
+
+    # 1. Detail: must be text, trim first, then check empty, length, and allowed characters
+    raw_detail = data.get('detail', '')
+    if not isinstance(raw_detail, str):
+        return False, "Use English letters, Korean, numbers or spaces only."
+    
+    detail = raw_detail.strip()
     
     if not detail:
         return False, "Enter your building and unit."
@@ -29,13 +36,21 @@ def validate_order(data):
         return False, "Use English letters, Korean, numbers or spaces only."
 
     # 2. Entry Method validation
-    entry_method = str(data.get('entry_method', '') or '').strip()
+    raw_method = data.get('entry_method', '')
+    if not isinstance(raw_method, str):
+        return False, "Choose how the rider gets in."
+    
+    entry_method = raw_method.strip()
     valid_methods = {'door_code', 'call', 'security_desk', 'free'}
     if entry_method not in valid_methods:
         return False, "Choose how the rider gets in."
 
     # 3. Entry Code validation
-    entry_code = str(data.get('entry_code', '') or '').strip()
+    raw_code = data.get('entry_code', '')
+    if not isinstance(raw_code, str):
+        raw_code = str(raw_code) if raw_code is not None else ''
+        
+    entry_code = raw_code.strip()
     if entry_method == 'door_code':
         if not entry_code:
             return False, "Enter the door code."
@@ -47,8 +62,12 @@ def validate_order(data):
         # Drop and store empty for any other method
         entry_code = ""
 
-    # 4. Rider Note: kept as written (no trimming), length check up to 200
-    rider_note = data.get('rider_note', '') or ''
+    # 4. Rider Note: must be a string, checked for length up to 200 (kept as written, no stripping)
+    rider_note = data.get('rider_note', '')
+    if rider_note is None:
+        rider_note = ''
+    if not isinstance(rider_note, str):
+        return False, "Use up to 200 characters."
     if len(rider_note) > 200:
         return False, "Use up to 200 characters."
 
