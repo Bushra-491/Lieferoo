@@ -7,28 +7,113 @@
   <link rel="stylesheet" href="./tokens.css" />
   <link rel="stylesheet" href="./user.css" />
   <style>
-    .checkout-content {
+    /* Centered Top Bar with Chevron */
+    .checkout-topbar {
+      height: var(--height-topbar);
+      padding: 0 var(--space-4);
+      display: grid;
+      grid-template-columns: 32px 1fr 32px;
+      align-items: center;
+      border-bottom: 1px solid var(--divider);
+      background-color: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .chevron-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0;
+    }
+    .checkout-topbar-title {
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--text);
+    }
+
+    /* Sections & 8px Grey Bands */
+    .checkout-main {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 96px;
+    }
+    .checkout-section {
       padding: var(--space-4);
       display: flex;
       flex-direction: column;
-      gap: var(--space-5);
-      padding-bottom: 96px;
+      gap: var(--space-2);
     }
+    .section-band {
+      height: 8px;
+      width: 100%;
+      background-color: var(--band);
+    }
+
+    /* Address Block (No grey card on main address) */
     .address-header-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+    .deliver-label {
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 500;
     }
     .change-link {
       font-size: 14px;
       font-weight: 600;
       color: var(--primary);
       text-decoration: none;
-      cursor: pointer;
     }
-    .change-link:hover {
-      text-decoration: underline;
+    .checkout-addr-title {
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+      color: var(--text);
     }
+    .checkout-addr-sub {
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--text-sub);
+    }
+
+    /* Entry Summary Row (#F3F3F3, radius 12, height 40px) */
+    .entry-summary-row {
+      height: 40px;
+      background-color: var(--band);
+      border-radius: var(--radius-md);
+      padding: 0 var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: var(--space-2);
+    }
+    .entry-summary-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .entry-edit-link {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* Drop-off Pills */
     .dropoff-grid {
       display: flex;
       flex-wrap: wrap;
@@ -36,10 +121,11 @@
       margin-top: var(--space-2);
     }
     .dropoff-pill {
-      padding: 10px 16px;
+      padding: 8px 14px;
       border: 1px solid var(--border);
       border-radius: var(--radius-pill);
       background-color: var(--surface);
+      font-family: inherit;
       font-size: 13px;
       font-weight: 600;
       color: var(--text);
@@ -51,87 +137,82 @@
       background-color: var(--primary-subtle);
       color: var(--primary);
     }
-    .warning-banner {
-      display: none;
-      background-color: #FDECEA;
-      color: var(--error);
-      border: 1px solid var(--error);
-      padding: var(--space-3) var(--space-4);
-      border-radius: var(--radius-md);
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: var(--space-3);
-    }
-    .warning-banner.visible {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2);
-    }
+
+    /* Order Financials */
     .financial-line {
       display: flex;
       justify-content: space-between;
       font-size: 14px;
       color: var(--text-sub);
-      margin-bottom: var(--space-2);
+      margin-bottom: var(--space-1);
     }
     .financial-line.total {
       font-size: 16px;
       font-weight: 700;
       color: var(--text);
-      border-top: 1px solid var(--divider);
-      padding-top: var(--space-3);
       margin-top: var(--space-2);
+      margin-bottom: 0;
     }
   </style>
 </head>
 <body>
   <div class="app-frame">
     <!-- Top Bar -->
-    <header class="top-bar">
-      <button type="button" class="back-btn" onclick="history.back()" aria-label="Go back">&#8592;</button>
-      <h1 class="top-bar-title">Checkout</h1>
+    <header class="checkout-topbar">
+      <button type="button" class="chevron-btn" onclick="history.back()" aria-label="Go back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <h1 class="checkout-topbar-title">Checkout</h1>
+      <div></div>
     </header>
 
-    <!-- Main Content -->
-    <main class="checkout-content">
-      
+    <main class="checkout-main">
       <!-- Deliver To Section -->
-      <div class="section-group">
+      <section class="checkout-section">
         <div class="address-header-row">
-          <span class="section-label" style="font-size: 13px; color: var(--text-sub); font-weight: 500;">Deliver to</span>
-          <a href="./user.html" id="changeAddressLink" class="change-link">Change</a>
+          <span class="deliver-label">Deliver to</span>
+          <a href="./user.html" class="change-link">Change</a>
         </div>
 
-        <!-- Warning banner if missing data -->
-        <div id="warningBanner" class="warning-banner" role="alert">
-          <span>⚠️ Add your building, unit and how the rider gets in — so your order isn't late.</span>
+        <div>
+          <div id="checkoutAddressTitle" class="checkout-addr-title">Hanbit Village Complex 2 Apt.</div>
+          <div id="checkoutAddressSub" class="checkout-addr-sub">10, Donggyo-ro 51-gil, Mapo-gu, Seoul</div>
         </div>
 
-        <div class="address-card">
-          <div id="checkoutAddressTitle" class="address-title">Hanbit Village Complex 2 Apt.</div>
-          <div id="checkoutAddressSub" class="address-sub">10, Donggyo-ro 51-gil, Mapo-gu, Seoul</div>
-          <div id="checkoutAddressUnit" style="font-size: 13px; font-weight: 600; color: var(--text); margin-top: 4px;">
-            🔑 101동 1203호 · Door code
+        <!-- Grey Entry Summary Row (No raw code shown) -->
+        <div class="entry-summary-row">
+          <div class="entry-summary-left">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+            </svg>
+            <span id="checkoutEntrySummary">101동 1203호 · Door code</span>
           </div>
+          <a href="./user.html" class="entry-edit-link">Edit</a>
         </div>
-      </div>
+      </section>
+
+      <!-- 8px Band Separator -->
+      <div class="section-band"></div>
 
       <!-- Drop-off Section -->
-      <div class="section-group">
+      <section class="checkout-section">
         <div class="section-label">Drop-off</div>
         <p class="helper-text">How to get in is saved with your address. Here you only pick the hand-off.</p>
         
         <div class="dropoff-grid" role="radiogroup">
-          <button type="button" class="dropoff-pill selected" data-value="leave_door">Leave at door, don’t ring</button>
-          <button type="button" class="dropoff-pill" data-value="leave_ring">Leave at door, ring bell</button>
-          <button type="button" class="dropoff-pill" data-value="hand_it">Hand it to me</button>
+          <button type="button" class="dropoff-pill selected" data-value="dont_ring" data-ko="문 앞에 두고 벨은 누르지 말아주세요">Leave at door, don’t ring</button>
+          <button type="button" class="dropoff-pill" data-value="ring_bell" data-ko="문 앞에 두고 벨을 눌러주세요">Leave at door, ring bell</button>
+          <button type="button" class="dropoff-pill" data-value="hand_it" data-ko="직접 전달해 주세요">Hand it to me</button>
         </div>
-      </div>
+      </section>
 
-      <hr style="border: none; border-top: 1px solid var(--divider);" />
+      <!-- 8px Band Separator -->
+      <div class="section-band"></div>
 
       <!-- Order Summary / Financials -->
-      <div class="section-group">
+      <section class="checkout-section">
         <div class="financial-line">
           <span>Order amount</span>
           <span>₩20,500</span>
@@ -144,7 +225,7 @@
           <span>Total</span>
           <span>₩23,500</span>
         </div>
-      </div>
+      </section>
     </main>
 
     <!-- Sticky Bottom Action Bar -->
@@ -154,53 +235,66 @@
   </div>
 
   <script>
+    const ENTRY_LABELS_EN = {
+      door_code: "Door code",
+      call: "Intercom",
+      security_desk: "Security desk",
+      free: "No code needed"
+    };
+
     const checkoutAddressTitle = document.getElementById("checkoutAddressTitle");
     const checkoutAddressSub = document.getElementById("checkoutAddressSub");
-    const checkoutAddressUnit = document.getElementById("checkoutAddressUnit");
+    const checkoutEntrySummary = document.getElementById("checkoutEntrySummary");
     const placeOrderBtn = document.getElementById("placeOrderBtn");
     const dropoffPills = document.querySelectorAll(".dropoff-pill");
 
-    // Load saved address data from localStorage if available
+    let selectedDropoffKo = "문 앞에 두고 벨은 누르지 말아주세요";
+
+    // Load saved address details from localStorage (without showing the raw PIN code)
     const savedDataStr = localStorage.getItem("lieferoo_checkout_address");
     if (savedDataStr) {
       try {
         const saved = JSON.parse(savedDataStr);
         if (saved.title) checkoutAddressTitle.textContent = saved.title;
         if (saved.sub) checkoutAddressSub.textContent = saved.sub;
-        
         if (saved.buildingUnit) {
-          const methodText = saved.entryMethod === "door_code" ? `Door code ${saved.doorCode}` : saved.entryMethod;
-          checkoutAddressUnit.innerHTML = `🔑 ${saved.buildingUnit} · ${methodText}`;
-          checkoutAddressUnit.style.display = "block";
+          const methodLabel = ENTRY_LABELS_EN[saved.entryMethod] || "Door code";
+          checkoutEntrySummary.textContent = `${saved.buildingUnit} · ${methodLabel}`;
         }
       } catch (e) {
-        console.error("Error parsing saved address", e);
+        console.error("Error reading saved address", e);
       }
     }
 
+    // Handle Drop-off Selection & Fix Ring/Don't Ring Bug
     dropoffPills.forEach(pill => {
       pill.addEventListener("click", () => {
         dropoffPills.forEach(p => p.classList.remove("selected"));
         pill.classList.add("selected");
+        selectedDropoffKo = pill.dataset.ko;
       });
     });
 
+    // Place Order -> Save drop-off preference & submit to backend
     placeOrderBtn.addEventListener("click", async () => {
       placeOrderBtn.disabled = true;
       placeOrderBtn.textContent = "Placing order...";
 
       const savedData = JSON.parse(localStorage.getItem("lieferoo_checkout_address") || "{}");
+      
+      // Store chosen Korean drop-off phrase so rider screen displays exact match
+      localStorage.setItem("lieferoo_dropoff_ko", selectedDropoffKo);
 
       try {
         const res = await fetch("/orders", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            address_id: "ADR-001",
+            address_id: savedData.address_id || "ADR-001",
             detail: savedData.buildingUnit || "101동 1203호",
             entry_method: savedData.entryMethod || "door_code",
             entry_code: savedData.doorCode || "4826#",
-            rider_note: savedData.riderNote || ""
+            rider_note: savedData.riderNote || "Building 101 is the first on the left from the main gate."
           })
         });
 
