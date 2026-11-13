@@ -117,7 +117,6 @@ Example order as returned by `GET /order?id=...`:
 | Language · framework | Python 3, Flask | Small, simple routes. Vercel runs Flask without extra setup. |
 | Front end | Plain HTML, CSS and JavaScript | Two plain pages, no build step. The designer's screens replace the styling later. |
 | Database | Neon Postgres | A shared store is needed so two phones see the same order. Free plan, connected through the Vercel Marketplace. |
-| Backend | Python| I'm very much familiar with the python more than i familiar with any other language.|
 | Hosting | Vercel | Listed in the Deploy Guide. One public https link for pages and API. |
 
 **Tech constraint:** Vercel serverless functions keep no files between requests, so all saved data lives in Neon. The database address is an environment variable.
