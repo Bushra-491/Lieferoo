@@ -107,9 +107,10 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border);
+  background-color: #EFEFEF;
 }
 
-.rider-map-svg {
+.rider-map-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
