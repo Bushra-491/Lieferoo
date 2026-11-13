@@ -18,10 +18,17 @@
     <!-- Server Error Top Banner -->
     <div id="serverBanner" class="server-banner" role="alert"></div>
 
+    <!-- Map / Location Pin Block (#E8E8E8 with primary-pressed pin icon) -->
+    <div class="location-banner" aria-hidden="true">
+      <svg class="location-pin-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+      </svg>
+    </div>
+
     <main class="content">
-      <!-- Address Picker (Custom addition above the card) -->
+      <!-- Address Picker -->
       <div class="section-group">
-        <label for="addressPicker" class="section-label">Select saved address</label>
+        <label for="addressPicker" class="section-label">Select address</label>
         <select id="addressPicker" class="picker-select"></select>
       </div>
 
@@ -98,6 +105,15 @@
           <p id="doorCodeError" class="error-text"></p>
         </div>
       </div>
+
+      <!-- Use this next time Checkbox -->
+      <label class="save-default-row" for="useNextTime">
+        <input type="checkbox" id="useNextTime" class="save-default-checkbox" />
+        <div>
+          <div class="save-default-title">Use this next time</div>
+          <div class="save-default-sub">Saved with the address. You can change it anytime.</div>
+        </div>
+      </label>
 
       <!-- Note for Rider -->
       <div class="section-group">
