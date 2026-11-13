@@ -1,10 +1,17 @@
 // Fixed Korean phrases for entry methods
 const ENTRY_PHRASES_KO = {
   door_code: "공동현관 비밀번호",
-  call: "세대 호출",
+  call: "공동현관 호출",
   security_desk: "경비실 호출/방문",
-  free: "자유 출입 가능"
+  free: "자유 출입"
 };
+
+// Key SVG icon for peach entry block
+const KEY_ICON_SVG = `
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+  </svg>
+`;
 
 // DOM Elements
 const statusPill = document.getElementById("statusPill");
@@ -12,6 +19,7 @@ const mainContent = document.getElementById("mainContent");
 const metaLine = document.getElementById("metaLine");
 const errorAlertBox = document.getElementById("errorAlertBox");
 const destinationBlock = document.getElementById("destinationBlock");
+const dropoffKoInstruction = document.getElementById("dropoffKoInstruction");
 const requestsBox = document.getElementById("requestsBox");
 const bottomBar = document.getElementById("bottomBar");
 const actionBtn = document.getElementById("actionBtn");
@@ -81,15 +89,24 @@ function renderOrderScreen() {
   const entryCode = currentOrder.entry_code || "";
   const koPhrase = ENTRY_PHRASES_KO[entryMethod] || "";
 
+  // Render single peach #FFA97F block (56px height) with key icon
   let entryHtml = "";
   if (koPhrase) {
     if (entryMethod === "door_code" && entryCode) {
       entryHtml = `
-        <div class="rider-orange-chip">${escapeHtml(koPhrase)}</div>
-        <div class="rider-code-huge">${escapeHtml(entryCode)}</div>
+        <div class="rider-peach-block">
+          ${KEY_ICON_SVG}
+          <span class="rider-peach-label">${escapeHtml(koPhrase)}</span>
+          <span class="rider-peach-code">${escapeHtml(entryCode)}</span>
+        </div>
       `;
     } else {
-      entryHtml = `<div class="rider-orange-chip">${escapeHtml(koPhrase)}</div>`;
+      entryHtml = `
+        <div class="rider-peach-pill">
+          ${KEY_ICON_SVG}
+          <span>${escapeHtml(koPhrase)}</span>
+        </div>
+      `;
     }
   }
 
@@ -104,19 +121,23 @@ function renderOrderScreen() {
     ${koAddressLine ? `<div class="rider-ko-address">${escapeHtml(koAddressLine)}</div>` : ""}
   `;
 
-  // Requests section formatting matching Image 2
+  // Load accurate Korean drop-off phrase selected on Checkout screen
+  const savedDropoffKo = localStorage.getItem("lieferoo_dropoff_ko") || "문 앞에 두고 벨은 누르지 말아주세요";
+  dropoffKoInstruction.textContent = savedDropoffKo;
+
+  // Customer memo box (#F3F3F3, radius 12)
   requestsBox.innerHTML = "";
   const rawNote = currentOrder.rider_note ?? "";
 
   if (!rawNote || rawNote.trim() === "") {
+    dropoffKoInstruction.textContent = "요청사항 없음";
     requestsBox.innerHTML = `
       <div class="requests-sublabel">고객 메모 · 원문(영어)</div>
       <div class="requests-body empty">메모 없음</div>
     `;
   } else {
     requestsBox.innerHTML = `
-      <div style="font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px;">문 앞에 두고 벨은 누르지 말아주세요</div>
-      <div class="requests-sublabel" style="margin-top: 4px;">고객 메모 · 원문(영어)</div>
+      <div class="requests-sublabel">고객 메모 · 원문(영어)</div>
       <div class="requests-body">${escapeHtml(rawNote)}</div>
     `;
   }
@@ -177,7 +198,7 @@ function renderNotFound() {
   mainContent.appendChild(container);
 }
 
-// Navigation button click handler
+// Navigation button click
 if (navBtn) {
   navBtn.addEventListener("click", () => {
     alert("길 안내 기능을 시작합니다.");
