@@ -61,7 +61,7 @@ def run_tests():
             print(f"Test {i:2d}: FAIL | Input: {inp} | Crashed with exception: {e}")
             failed += 1
 
-    print(f"\nResult: {passed} passed, {failed} passed.")
+    print(f"\nResult: {passed} passed, {failed} failed.")
 
 if __name__ == "__main__":
     run_tests()
