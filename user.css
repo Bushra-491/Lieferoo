@@ -23,7 +23,7 @@
   font-weight: 700;
 }
 
-/* Server Top Banner (for unexpected server errors) */
+/* Server Top Banner */
 .server-banner {
   background-color: #FDECEA;
   color: var(--error);
@@ -38,7 +38,7 @@
   display: block;
 }
 
-/* Location Preview Block right under Top Bar */
+/* Map Image Block Container */
 .location-banner {
   width: 100%;
   height: 140px;
@@ -47,12 +47,13 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid var(--divider);
+  overflow: hidden;
 }
 
-.location-pin-icon {
-  width: 32px;
-  height: 32px;
-  color: var(--primary-pressed);
+.location-map-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Main Scrollable Content */
@@ -61,7 +62,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
-  padding-bottom: 96px; /* Space for sticky bottom button */
+  padding-bottom: 96px;
 }
 
 .section-group {
@@ -132,7 +133,7 @@
   border-color: var(--error);
 }
 
-/* Radio Cards (4 options) */
+/* Radio Cards */
 .radio-grid {
   display: flex;
   flex-direction: column;
@@ -192,21 +193,22 @@
   display: flex;
 }
 
-/* Use This Next Time Checkbox Row */
+/* Smaller Compact "Use This Next Time" Checkbox Row */
 .save-default-row {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
+  gap: var(--space-2);
+  padding: 10px var(--space-3);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background-color: var(--surface);
   cursor: pointer;
+  max-width: 100%;
 }
 
 .save-default-checkbox {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   margin-top: 2px;
   accent-color: var(--primary);
   cursor: pointer;
@@ -214,16 +216,16 @@
 }
 
 .save-default-title {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text);
 }
 
 .save-default-sub {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-sub);
-  margin-top: 2px;
-  line-height: 1.4;
+  margin-top: 1px;
+  line-height: 1.2;
 }
 
 /* Note Textarea + Counter */
@@ -325,18 +327,6 @@
 
 .success-box.visible {
   display: flex;
-}
-.save-default-sub.small-subtext {
-  font-size: 11px;
-  color: var(--text-sub);
-  margin-top: 2px;
-  line-height: 1.3;
-}
-
-.success-link {
-  color: var(--success);
-  font-weight: 700;
-  text-decoration: underline;
 }
 
 /* Sticky Bottom Footer */
