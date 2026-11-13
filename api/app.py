@@ -180,5 +180,49 @@ def get_order():
     row["created_at"] = row["created_at"].isoformat()
     return jsonify({"order": row}), 200
 
+@app.route('/deliver', methods=['POST'])
+def deliver_order():
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"error": "Invalid request."}), 400
+
+    order_id = data.get('id') or data.get('order_id')
+    if not isinstance(order_id, str) or not order_id.strip():
+        return jsonify({"error": "Order ID is required."}), 400
+    
+    order_id = order_id.strip()
+
+    with get_conn() as conn:
+        with conn.cursor(row_factory=dict_row) as cur:
+            cur.execute("SELECT order_id, status, delivered_at FROM orders WHERE order_id = %s", (order_id,))
+            row = cur.fetchone()
+            if not row:
+                return jsonify({"error": "Order not found."}), 404
+
+            if row['status'] == 'delivered':
+                return jsonify({
+                    "message": "Already delivered.",
+                    "order_id": row['order_id'],
+                    "status": row['status'],
+                    "delivered_at": row['delivered_at'].isoformat() if row['delivered_at'] else None
+                }), 200
+
+            cur.execute(
+                """
+                UPDATE orders
+                SET status = 'delivered', delivered_at = NOW()
+                WHERE order_id = %s
+                RETURNING order_id, status, delivered_at
+                """,
+                (order_id,)
+            )
+            updated = cur.fetchone()
+
+    updated["delivered_at"] = updated["delivered_at"].isoformat() if updated["delivered_at"] else None
+    return jsonify({
+        "message": "Order marked as delivered.",
+        "order": updated
+    }), 200
+
 if __name__ == '__main__':
     app.run(debug=True)
