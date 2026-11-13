@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/ping", "destination": "api/app.py" },
+    { "source": "/db-check", "destination": "api/app.py" },
+    { "source": "/orders", "destination": "api/app.py" },
+    { "source": "/order", "destination": "api/app.py" },
+    { "source": "/addresses", "destination": "api/app.py" },
+    { "source": "/deliver", "destination": "api/app.py" }
+  ]
+}
