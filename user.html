@@ -18,12 +18,9 @@
     <!-- Server Error Top Banner -->
     <div id="serverBanner" class="server-banner" role="alert"></div>
 
-    <!-- Map / Location Pin Block (#E8E8E8 with primary-pressed pin icon) -->
-    <!-- Map / Location Placeholder Block (Visual Only) -->
+    <!-- Map Image Block -->
     <div class="location-banner" aria-hidden="true">
-      <svg class="location-pin-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
-      </svg>
+      <img src="map-preview.png" alt="Location Map" class="location-map-img" />
     </div>
 
     <main class="content">
@@ -44,12 +41,12 @@
         <div class="section-label">Where exactly?</div>
         <label for="buildingUnit" class="helper-text" style="font-weight: 600; color: var(--text);">Building and unit *</label>
         <input
-         type="text"
-         id="buildingUnit"
-         class="input-field"
-         placeholder="e.g. 101동 1203호"
-         maxlength="50"
-         autocomplete="off"
+           type="text"
+           id="buildingUnit"
+           class="input-field"
+           placeholder="e.g. 101동 1203호"
+           maxlength="50"
+           autocomplete="off"
         />
         <p id="buildingError" class="error-text"></p>
         <p class="helper-text">Write it like the example. Riders read it in Korean.</p>
@@ -93,7 +90,7 @@
         </div>
         <p id="entryError" class="error-text"></p>
 
-        <!-- Door Code Input (Visible only when Door code is selected) -->
+        <!-- Door Code Input -->
         <div id="doorCodeBox" class="door-code-box">
           <label for="doorCodeInput" class="helper-text" style="font-weight: 600; color: var(--text);">Door code *</label>
           <input
@@ -107,13 +104,13 @@
         </div>
       </div>
 
-      <!-- Use this next time Checkbox -->
+      <!-- Use this next time Checkbox (Compact Version) -->
       <label class="save-default-row" for="useNextTime">
-      <input type="checkbox" id="useNextTime" class="save-default-checkbox" />
-      <div>
-        <div class="save-default-title">Use this next time</div>
-        <div class="save-default-sub small-subtext">Saved with the address. You can change it anytime.</div>
-      </div>
+        <input type="checkbox" id="useNextTime" class="save-default-checkbox" />
+        <div>
+          <div class="save-default-title">Use this next time</div>
+          <div class="save-default-sub small-subtext">Saved with the address. You can change it anytime.</div>
+        </div>
       </label>
 
       <!-- Note for Rider -->
@@ -135,7 +132,7 @@
         <div id="previewContainer"></div>
       </div>
 
-      <!-- Save Confirmation -->
+      <!-- Success Confirmation -->
       <div id="successBox" class="success-box" role="status"></div>
     </main>
 
