@@ -235,123 +235,93 @@ addressPicker.addEventListener("change", (e) => {
 
 buildingUnit.addEventListener("input", () => {
   updateButtonState();
-  if (hasSubmittedOnce) renderErrors(validateForm());
+  if (hasSubmittedOnce) {
+    renderErrors(validateForm());
+  }
   renderPreview();
 });
 
-radioInputs.forEach((radio) => {
-  radio.addEventListener("change", () => {
-    const val = radio.value;
-
+radioInputs.forEach((input) => {
+  input.addEventListener("change", () => {
+    const val = getSelectedEntryMethod();
     radioCards.forEach((card) => {
       card.classList.toggle("selected", card.dataset.value === val);
     });
-
-    if (val === "door_code") {
-      doorCodeBox.classList.add("visible");
-    } else {
-      doorCodeBox.classList.remove("visible");
+    doorCodeBox.classList.toggle("visible", val === "door_code");
+    if (val !== "door_code") {
       doorCodeInput.value = "";
-      doorCodeError.classList.remove("visible");
-      doorCodeInput.classList.remove("has-error");
     }
-
     updateButtonState();
-    if (hasSubmittedOnce) renderErrors(validateForm());
+    if (hasSubmittedOnce) {
+      renderErrors(validateForm());
+    }
     renderPreview();
   });
 });
 
 doorCodeInput.addEventListener("input", () => {
   updateButtonState();
-  if (hasSubmittedOnce) renderErrors(validateForm());
+  if (hasSubmittedOnce) {
+    renderErrors(validateForm());
+  }
   renderPreview();
 });
 
-if (useNextTime) {
-  useNextTime.addEventListener("change", () => {
-    updateButtonState();
-  });
-}
-
 riderNote.addEventListener("input", () => {
-  charCounter.textContent = `${riderNote.value.length}/200`;
+  const len = riderNote.value.length;
+  charCounter.textContent = `${len}/200`;
   updateButtonState();
   renderPreview();
 });
 
 saveBtn.addEventListener("click", async () => {
   hasSubmittedOnce = true;
-  serverBanner.classList.remove("visible");
-  successBox.classList.remove("visible");
-
   const errors = validateForm();
   renderErrors(errors);
-  renderPreview();
 
   if (errors.building || errors.entry || errors.doorCode) {
+    renderPreview();
     return;
   }
-
-  if (!selectedAddress) {
-    serverBanner.textContent = "Please select a valid address.";
-    serverBanner.classList.add("visible");
-    return;
-  }
-
-  const payload = {
-    address_id: selectedAddress.address_id,
-    detail: buildingUnit.value.trim(),
-    entry_method: getSelectedEntryMethod(),
-    entry_code: getSelectedEntryMethod() === "door_code" ? doorCodeInput.value.trim() : "",
-    rider_note: riderNote.value.trim()
-  };
 
   saveBtn.disabled = true;
   saveBtn.textContent = "Saving...";
 
+  const payload = {
+    address_id: selectedAddress ? selectedAddress.address_id : "ADR-001",
+    detail: buildingUnit.value.trim(),
+    entry_method: getSelectedEntryMethod(),
+    entry_code: doorCodeInput.value.trim(),
+    rider_note: riderNote.value.trim()
+  };
+
   try {
-    const response = await fetch("/orders", {
+    const res = await fetch("/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
 
-    const data = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
-      const serverMsg = data.error || data.message || "Failed to place order.";
-      if (data.field === "detail" || serverMsg.includes("building and unit")) {
-        renderErrors({ building: serverMsg, entry: "", doorCode: "" });
-      } else if (data.field === "entry_method") {
-        renderErrors({ building: "", entry: serverMsg, doorCode: "" });
-      } else if (data.field === "entry_code") {
-        renderErrors({ building: "", entry: "", doorCode: serverMsg });
-      } else {
-        serverBanner.textContent = serverMsg;
-        serverBanner.classList.add("visible");
-      }
-      renderPreview();
-      return;
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to save address.");
     }
 
-    const orderId = data.order_id || data.id;
     successBox.innerHTML = `
-      <div><strong>Address saved!</strong> Order ID: <code>${escapeHtml(String(orderId))}</code></div>
-      <a class="success-link" href="rider.html?id=${encodeURIComponent(orderId)}">
-        Open Rider Screen (rider.html?id=${escapeHtml(String(orderId))})
-      </a>
+      <div><strong>Success!</strong> Order created.</div>
+      <a href="./rider.html?id=${encodeURIComponent(data.order_id)}" class="success-link">Open Rider Screen (${data.order_id})</a>
     `;
     successBox.classList.add("visible");
-    successBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    saveBtn.textContent = "Saved";
   } catch (err) {
-    serverBanner.textContent = "Network error. Please try again.";
+    serverBanner.textContent = err.message;
     serverBanner.classList.add("visible");
-  } finally {
     saveBtn.disabled = false;
     saveBtn.textContent = "Save address";
   }
 });
 
+// Initialize
 loadAddresses();
+updateButtonState();
 renderPreview();
