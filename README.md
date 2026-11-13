@@ -154,7 +154,6 @@ Example order as returned by `GET /order?id=...`:
 | Organizer | Koready | https://github.com/oinglab | Organized the whole project and made the team|
 | Developer | Bushra Saleem | https://github.com/Bushra-491 | Dev Setup and Data Structure, User Screens build, Data flow and Order flow status, Rider Screen build and Integration|
 | Developer | 전진영 | - | - |
-| Designer | Anastasiia Slobodina | https://github.com/cinnamonn-designn | Current screen analysis and structure proposal (D0), PRD v1: flow and screens: review, User screens UI, Rider screens UI and design system, Final screens for marketing,
-please update this into figma (PRD v1.2 updates) |
+| Designer | Anastasiia Slobodina | https://github.com/cinnamonn-designn | Current screen analysis and structure proposal (D0), PRD v1: flow and screens: review, User screens UI, Rider screens UI and design system, Final screens for marketing, please update this into figma (PRD v1.2 updates)|
 | Designer | Sienna |  | Core flow wireframes |
 | PM | Charlotte | https://github.com/helloyeonni | PRD (v1.2), Kickoff note,  PRD v1: flow and screens, PRD updated v1.2, Final handoff |
