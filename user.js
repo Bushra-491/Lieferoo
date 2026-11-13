@@ -45,9 +45,7 @@ let selectedAddress = null;
 let hasSubmittedOnce = false;
 
 // Regex Rules (Mirroring server validation)
-// English letters, Korean (Hangul syllables/Jamo), numbers, or spaces only
 const BUILDING_REGEX = /^[a-zA-Z0-9\uAC00-\uD7A3\u1100-\u11FF\u3130-\u318F\s]+$/;
-// Numbers, # or * only
 const DOOR_CODE_REGEX = /^[0-9#*]+$/;
 
 // 1. Load real addresses from GET /addresses
@@ -95,7 +93,6 @@ function getSelectedEntryMethod() {
   return checked ? checked.value : "";
 }
 
-// Button: gray and disabled until the form has ANY input or selection, then active
 function updateButtonState() {
   const hasAnyInput =
     buildingUnit.value.trim().length > 0 ||
@@ -107,7 +104,6 @@ function updateButtonState() {
   saveBtn.disabled = !hasAnyInput;
 }
 
-// Client Validation Rules (mirrors server rules)
 function validateForm() {
   const errors = {
     building: "",
@@ -140,25 +136,21 @@ function validateForm() {
 }
 
 function renderErrors(errors) {
-  // Building and unit error
   buildingError.textContent = errors.building;
   buildingError.classList.toggle("visible", Boolean(errors.building));
   buildingUnit.classList.toggle("has-error", Boolean(errors.building));
 
-  // Entry method error (all 4 cards get red border)
   entryError.textContent = errors.entry;
   entryError.classList.toggle("visible", Boolean(errors.entry));
   radioCards.forEach((card) => {
     card.classList.toggle("has-error", Boolean(errors.entry));
   });
 
-  // Door code error
   doorCodeError.textContent = errors.doorCode;
   doorCodeError.classList.toggle("visible", Boolean(errors.doorCode));
   doorCodeInput.classList.toggle("has-error", Boolean(errors.doorCode));
 }
 
-// Render Rider Preview (Empty, Error, or Dark Block)
 function renderPreview() {
   const bVal = buildingUnit.value.trim();
   const entryVal = getSelectedEntryMethod();
@@ -167,7 +159,6 @@ function renderPreview() {
 
   const isEmpty = !bVal && !entryVal && !dVal && !nVal;
 
-  // 1. Empty state
   if (isEmpty) {
     previewContainer.innerHTML = `
       <div class="preview-empty-or-error">
@@ -177,7 +168,6 @@ function renderPreview() {
     return;
   }
 
-  // Check format errors immediately, or missing required fields once submitted
   const errors = validateForm();
   const hasFormatError =
     (bVal && !BUILDING_REGEX.test(bVal)) ||
@@ -187,7 +177,6 @@ function renderPreview() {
     ? Boolean(errors.building || errors.entry || errors.doorCode)
     : hasFormatError;
 
-  // 2. Error state
   if (hasAnyError) {
     previewContainer.innerHTML = `
       <div class="preview-empty-or-error is-error">
@@ -197,8 +186,7 @@ function renderPreview() {
     return;
   }
 
-  // 3. Dark preview block
-  const detailText = bVal || "—";
+  const detailText = bVal || "101동 1203호";
   let chipText = "";
   let captionMethodText = "";
 
@@ -292,7 +280,6 @@ riderNote.addEventListener("input", () => {
   renderPreview();
 });
 
-// Save & POST to /orders (Matches your backend's exact payload keys)
 saveBtn.addEventListener("click", async () => {
   hasSubmittedOnce = true;
   serverBanner.classList.remove("visible");
@@ -312,7 +299,6 @@ saveBtn.addEventListener("click", async () => {
     return;
   }
 
-  // Exact keys from your existing user.html backend contract
   const payload = {
     address_id: selectedAddress.address_id,
     detail: buildingUnit.value.trim(),
@@ -335,13 +321,11 @@ saveBtn.addEventListener("click", async () => {
 
     if (!response.ok) {
       const serverMsg = data.error || data.message || "Failed to place order.";
-
-      // Map server error to matching field if server specifies field or message matches
-      if (data.field === "detail" || serverMsg.includes("building and unit") || serverMsg.includes("English letters, Korean")) {
+      if (data.field === "detail" || serverMsg.includes("building and unit")) {
         renderErrors({ building: serverMsg, entry: "", doorCode: "" });
-      } else if (data.field === "entry_method" || serverMsg.includes("how the rider gets in")) {
+      } else if (data.field === "entry_method") {
         renderErrors({ building: "", entry: serverMsg, doorCode: "" });
-      } else if (data.field === "entry_code" || serverMsg.includes("door code") || serverMsg.includes("numbers, # or *")) {
+      } else if (data.field === "entry_code") {
         renderErrors({ building: "", entry: "", doorCode: serverMsg });
       } else {
         serverBanner.textContent = serverMsg;
@@ -351,7 +335,6 @@ saveBtn.addEventListener("click", async () => {
       return;
     }
 
-    // Success: green confirmation with order ID and link to rider.html?id=...
     const orderId = data.order_id || data.id;
     successBox.innerHTML = `
       <div><strong>Address saved!</strong> Order ID: <code>${escapeHtml(String(orderId))}</code></div>
@@ -370,6 +353,5 @@ saveBtn.addEventListener("click", async () => {
   }
 });
 
-// Initialize on page load
 loadAddresses();
 renderPreview();
