@@ -9,49 +9,62 @@
 </head>
 <body>
   <div class="app-frame">
-    <!-- Top Bar -->
+    <!-- Top Bar with 24px Back Chevron -->
     <header class="top-bar">
-      <h1 class="rider-top-title">배달 상세</h1>
+      <div class="top-bar-left">
+        <button type="button" class="chevron-btn" onclick="history.back()" aria-label="뒤로 가기">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <h1 class="rider-top-title">배달 상세</h1>
+      </div>
       <span id="statusPill" class="status-pill in-progress">배달 중</span>
     </header>
 
     <!-- Main Content -->
-    <main id="mainContent" class="rider-content">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div id="metaLine" class="meta-line"></div>
-        <div style="font-size: 12px; color: var(--text-sub); font-weight: 500;">픽업 20:41</div>
+    <main id="mainContent" class="rider-main">
+      <!-- Top Section: Order Meta, Dark Card, Map -->
+      <div class="rider-top-section">
+        <div class="order-meta-row">
+          <span id="metaLine"></span>
+          <span>픽업 20:41</span>
+        </div>
+
+        <!-- Error Box -->
+        <div id="errorAlertBox" class="error-alert-box" role="alert"></div>
+
+        <!-- Dark Destination Block ("도착지") -->
+        <section id="destinationBlock" class="rider-dark-card" aria-label="도착지"></section>
+
+        <!-- Map Route PNG Card -->
+        <section class="rider-map-card" aria-label="지도 경로">
+          <img src="map-route.png" alt="Delivery Route Map" class="rider-map-img" />
+        </section>
       </div>
 
-      <!-- Error Box -->
-      <div id="errorAlertBox" class="error-alert-box" role="alert"></div>
+      <!-- 8px #F3F3F3 Band Above Requests -->
+      <div class="section-band"></div>
 
-      <!-- Dark Destination Block ("도착지") -->
-      <section id="destinationBlock" class="rider-dark-card" aria-label="도착지"></section>
+      <!-- Bottom Section: Requests & Order Summary -->
+      <div class="rider-bottom-section">
+        <section id="requestsSection" class="requests-section" aria-label="요청사항">
+          <div class="requests-heading">요청사항</div>
+          <div id="dropoffKoInstruction" class="dropoff-ko-text"></div>
+          <div id="requestsBox" class="requests-card"></div>
+        </section>
 
-      <!-- Map / Route Card Preview -->
-      <section class="rider-map-card" aria-label="지도 경로">
-        <img src="map-route.png" alt="Delivery Route Map" class="rider-map-img" />
-      </section>
-
-      <!-- Requests Section ("요청사항") -->
-      <section id="requestsSection" class="requests-section" aria-label="요청사항">
-        <div class="requests-heading">요청사항</div>
-        <div id="requestsBox" class="requests-card"></div>
-      </section>
-
-      <!-- Order Summary Meta Line -->
-      <div class="order-summary-meta">
-        <span>메뉴 2개 · 23,500원</span>
-        <span>선결제 완료</span>
+        <!-- Single-Line Order Summary -->
+        <div class="order-summary-line">
+          메뉴 2개 · 23,500원 · 선결제 완료
+        </div>
       </div>
     </main>
 
-    <!-- Bottom Action Bar with Dual Buttons -->
+    <!-- Bottom Action Bar (PRD v1.2 Vertical Stack) -->
     <div id="bottomBar" class="bottom-bar">
-      <div class="bottom-buttons-row">
-        <button type="button" id="navBtn" class="btn-secondary">길 안내</button>
-        <button type="button" id="actionBtn" class="btn-big">배달 완료</button>
-      </div>
+      <button type="button" id="navBtn" class="btn-nav-stacked">길 안내</button>
+      <button type="button" id="actionBtn" class="btn-complete-stacked">배달 완료</button>
     </div>
   </div>
 
