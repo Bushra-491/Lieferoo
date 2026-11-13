@@ -6,7 +6,7 @@ sys.path.append("api")
 from app import validate_order
 
 test_cases = [
-    # (Input Data, Expected Bool, Expected Message or Condition)
+    # (Input Data, Expected Bool, Expected Value/Condition)
     ({"detail": "101-1203", "entry_method": "free"}, False, "Use English letters, Korean, numbers or spaces only."),
     ({"detail": "201号室", "entry_method": "free"}, False, "Use English letters, Korean, numbers or spaces only."),
     ({"detail": "ㄱㄴ", "entry_method": "free"}, False, "Use English letters, Korean, numbers or spaces only."),
@@ -17,11 +17,19 @@ test_cases = [
     ({"detail": "Flat 2B", "entry_method": "phone"}, False, "Choose how the rider gets in."),
     ({"detail": "Flat 2B", "entry_method": "door_code"}, False, "Enter the door code."),
     ({"detail": "Flat 2B", "entry_method": "door_code", "entry_code": "12ab"}, False, "Use numbers, # or * only."),
-    ({"detail": "Flat 2B", "entry_method": "call", "entry_code": "99"}, True, ""), # code dropped
+    
+    # Test 11: call with code, check explicitly that entry_code is dropped (== "")
+    ({"detail": "Flat 2B", "entry_method": "call", "entry_code": "99"}, True, "CHECK_EMPTY_CODE"),
+    
     ({"detail": "Flat 2B", "entry_method": "free", "rider_note": "a" * 201}, False, "Use up to 200 characters."),
     ({}, False, "Enter your building and unit."),
     (None, False, "Invalid request."),
     ({"detail": "Flat 2B", "entry_method": "free", "rider_note": 5}, False, "Use up to 200 characters."),
+    
+    # Optional boundary tests:
+    ({"detail": "A" * 50, "entry_method": "free"}, True, "A" * 50), # Exactly 50 characters detail passes
+    ({"detail": "Flat 2B", "entry_method": "door_code", "entry_code": "1" * 20}, True, "1" * 20), # Exactly 20 characters code passes
+    ({"detail": "Flat 2B", "entry_method": "free", "rider_note": "a" * 200}, True, "a" * 200), # Exactly 200 characters note passes
 ]
 
 def run_tests():
@@ -32,8 +40,11 @@ def run_tests():
             ok, res = validate_order(inp)
             if ok == exp_ok:
                 if ok:
-                    # check if expected value is found in cleaned output
-                    matched = exp_val in str(res.values())
+                    # Special explicit check for Test 11 to ensure entry_code is dropped
+                    if exp_val == "CHECK_EMPTY_CODE":
+                        matched = (res.get("entry_code") == "")
+                    else:
+                        matched = exp_val in str(res.values())
                 else:
                     matched = (res == exp_val)
                 
@@ -50,7 +61,7 @@ def run_tests():
             print(f"Test {i:2d}: FAIL | Input: {inp} | Crashed with exception: {e}")
             failed += 1
 
-    print(f"\nResult: {passed} passed, {failed} failed.")
+    print(f"\nResult: {passed} passed, {failed} passed.")
 
 if __name__ == "__main__":
     run_tests()
